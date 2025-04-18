@@ -38,21 +38,21 @@ h6 {
   margin-top: 0.5rem;
 }
 
-.social-icons button { 
-  border-radius: 50%; 
-  width: 40px; 
-  height: 40px; 
-  display: flex; 
+.social-icons button {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0; 
-  overflow: hidden; 
+  padding: 0;
+  overflow: hidden;
 }
 
 .social-icons button img {
-  width: 60%;      
-  height: 60%;   
-  object-fit: contain; 
+  width: 60%;
+  height: 60%;
+  object-fit: contain;
 }
 
 .register-container {
