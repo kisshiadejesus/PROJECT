@@ -1,0 +1,111 @@
+.main-container {
+  background-image: url("../assets/05.gif");
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.navbar-header {
+  padding: 1rem;
+  background-color: white;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.navbar-header h3 {
+  margin: 0;
+}
+
+a {
+  color: grey;
+  font-size: 15px;
+}
+
+a:hover {
+  color: blue;
+}
+
+h6 {
+  color:#C00000;
+}
+
+.social-icons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.social-icons button { 
+  border-radius: 50%; 
+  width: 40px; 
+  height: 40px; 
+  display: flex; 
+  justify-content: center;
+  align-items: center;
+  padding: 0; 
+  overflow: hidden; 
+}
+
+.social-icons button img {
+  width: 60%;      
+  height: 60%;   
+  object-fit: contain; 
+}
+
+.register-container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: 10vw;
+}
+
+.register-card {
+  width: 22rem;
+  padding: 1.5rem;
+}
+
+p {
+  font-size:15px;
+}
+
+.w-100 {
+  background-color:#C00000;
+  color: white;
+}
+
+.footer {
+  background-color: #e9eaed;
+  padding: 20px;
+  bottom: 0;
+  width: 100vw;
+}
+
+.footer h5,
+.footer h6 {
+  text-transform: uppercase;
+}
+
+.footer .social-icons i {
+  margin-right: 0.5rem;
+}
+
+.payment-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.payment-buttons button {
+  padding: 0.5rem;
+}
+
+.footer-note {
+  text-align: left;
+  color: #6c757d;
+  margin-top: 1rem;
+  font-size: 10px;
+}

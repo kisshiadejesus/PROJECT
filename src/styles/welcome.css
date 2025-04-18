@@ -1,0 +1,78 @@
+/* ../styles/welcome.css */
+.welcome-container {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.navbar-custom {
+  z-index: 10;
+  background-color: #f8f9fa;
+  height: 56px; /* Adjust to your actual navbar height */
+}
+
+.navbar-custom .navbar-brand {
+  font-weight: bold;
+  color: #000;
+  text-decoration: none;
+}
+
+.navbar-custom .nav-link {
+  color: #000;
+  text-decoration: none;
+}
+
+.navbar-custom .nav-link:hover {
+  color: #0056b3;
+  cursor: pointer;
+}
+
+.welcome-image-container {
+  flex-grow: 1;
+  position: relative;
+  overflow: hidden;
+}
+
+.welcome-image {
+  position: absolute;
+  top: 56px; /* Start below the navbar */
+  left: 0;
+  width: 100%;
+  height: calc(100% - 56px); /* Fill the height below the navbar */
+  object-fit: cover; /* Cover the container, potentially cropping */
+  z-index: 1; /* Ensure image is behind the text */
+}
+
+.welcome-text-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 20;
+  width: 80%;
+  max-width: 800px;
+  text-align: left;
+  color: white;
+}
+
+
+
+.welcome-title {
+  font-size: 3em;
+  font-weight: bold;
+  margin-bottom: 0.5em;
+}
+
+.welcome-subtitle {
+  font-size: 1.2em;
+  line-height: 1.5;
+  margin-bottom: 1em;
+}
+
+.welcome-button {
+  padding: 0.8em 2em;
+  font-size: 1.1em;
+}
