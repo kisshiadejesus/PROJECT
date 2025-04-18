@@ -6,7 +6,7 @@ import '../styles/welcome.css';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import Button from 'react-bootstrap/Button'; // Import Button
+import Button from 'react-bootstrap/Button'; 
 
 function Welcome() {
   const navigate = useNavigate();
@@ -50,5 +50,3 @@ function Welcome() {
     </div>
   );
 }
-
-export default Welcome;

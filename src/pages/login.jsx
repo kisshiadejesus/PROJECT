@@ -10,11 +10,20 @@ function Login() {
   const navigate = useNavigate();
   const [error, setError] = useState('');
 
+  const users = [
+    { email: 'smoothoperator@ust.edu.ph', password: 'C1cs@2024' },
+    { email: 'dennisngungie@ust.edu.ph', password: 'password123' },
+    { email: 'thomasaquinas@ust.edu.ph', password: 'ustcics' },
+  ];
+
   const handleSubmit = (event) => {
     event.preventDefault();
     setError('');
+    const validUser = users.find(
+      (user) => user.email === email && user.password === password
+    );
 
-    if (email === 'smoothoperator@ust.edu.ph' && password === 'C1cs@2024') {
+    if (validUser) {
       console.log('Login successful for:', email);
       navigate('/welcome');
     } else {
@@ -45,6 +54,7 @@ function Login() {
               </a>
             </p>
             <Form onSubmit={handleSubmit}>
+              {error && <p className="text-danger mt-2">{error}</p>}
               <Form.Group className="mb-3">
                 <Form.Control
                   type="email"
@@ -67,7 +77,6 @@ function Login() {
                 Log In
               </Button>
             </Form>
-            {error && <p className="text-danger mt-2">{error}</p>}
           </Card.Body>
         </Card>
       </Container>
