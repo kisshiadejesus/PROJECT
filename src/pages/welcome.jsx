@@ -1,12 +1,11 @@
 import React from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import Image from 'react-bootstrap/Image';
-import welcomeImage from '../assets/03.jpeg';
 import '../styles/welcome.css';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import Button from 'react-bootstrap/Button'; 
+import Button from 'react-bootstrap/Button';
+import formulaOneLogo from '../assets/02.png'; 
 
 function Welcome() {
   const navigate = useNavigate();
@@ -30,23 +29,37 @@ function Welcome() {
         </Container>
       </Navbar>
       <div className="welcome-image-container">
-        <Image
-          src={welcomeImage}
-          className="welcome-image"
-          alt="Welcome Banner"
-        />
         <Container className="welcome-text-container">
-          <div className="welcome-text-overlay">
-            <h2 className="welcome-title">FIND FERRARI MERCH THAT</h2>
-            <h2 className="welcome-title">MATCHES YOUR STYLE</h2>
-            <p className="welcome-subtitle">Explore our collection of authentic Ferrari merchandise, crafted for fans who live for</p>
-            <p className="welcome-subtitle">speed, style, and legacy.</p>
-            <Button variant="danger" onClick={handleLogout} className="welcome-button">
-              Shop Now
-            </Button>
-          </div>
+          <h2 className="welcome-title">FIND FERRARI MERCH THAT</h2>
+          <h2 className="welcome-title">MATCHES YOUR STYLE</h2>
+          <p className="welcome-subtitle">Explore our collection of authentic Ferrari merchandise, crafted for fans who live for</p>
+          <p className="welcome-subtitle">speed, style, and legacy.</p>
+          <Button variant="danger" onClick={handleLogout} className="welcome-button">
+            Shop Now
+          </Button>
         </Container>
+        <div className="welcome-stats-bar">
+          <div>
+            <h3 className="stats-number">200+</h3>
+            <p className="stats-label">International Brands</p>
+          </div>
+          <div>
+            <h3 className="stats-number">2,000+</h3>
+            <p className="stats-label">High-Quality Products</p>
+          </div>
+          <div>
+            <h3 className="stats-number">30,000+</h3>
+            <p className="stats-label">Happy Customers</p>
+          </div>
+        </div>
+      </div>
+      <div className="formula-one-banner">
+        <div className="formula-one-logo-container">
+          <img src={formulaOneLogo} alt="Formula 1 Logo" className="formula-one-logo" />
+        </div>
       </div>
     </div>
   );
 }
+
+export default Welcome;
