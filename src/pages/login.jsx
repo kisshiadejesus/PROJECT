@@ -82,93 +82,108 @@ function Login() {
       </Container>
 
       <footer className="footer">
-        <div className="container-fluid p-0">
-          <Row>
-            <Col md={4}>
-              <h5 style={{ color: '#C00000', fontWeight: 'bold' }}>SWIFT.CO</h5>
-              <p className="text-muted">
-                We bring you premium Ferrari merchandise that matches your passion for speed, power, and style.
-              </p>
-              <div className="social-icons">
-                <Button variant="outline-light" title="Twitter" style={{ backgroundColor: 'white' }}>
-                  <img src="/src/assets/twitter.png" alt="Twitter" height="30" />
-                </Button>
-                <Button variant="outline-light" title="Facebook" style={{ backgroundColor: 'white' }}>
-                  <img src="/src/assets/facebook.png" alt="Facebook" height="30" />
-                </Button>
-                <Button variant="outline-light" title="Instagram" style={{ backgroundColor: 'white' }}>
-                  <img src="/src/assets/instagram.png" alt="Instagram" height="30" />
-                </Button>
-                <Button variant="outline-light" title="Github" style={{ backgroundColor: 'white' }}>
-                  <img src="/src/assets/github.png" alt="Github" height="30" />
-                </Button>
-              </div>
-            </Col>
-            <Col md={4}>
-              <h6>Help</h6>
-              <ul className="list-unstyled">
-                <li>
-                  <a href="#" className="text-decoration-none">
-                    Delivery Details
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="text-decoration-none">
-                    Terms & Conditions
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="text-decoration-none">
-                    Privacy Policy
-                  </a>
-                </li>
-              </ul>
-            </Col>
-            <Col md={4}>
-              <h6>FAQ</h6>
-              <ul className="list-unstyled">
-                <li>
-                  <a href="#" className="text-decoration-none">
-                    Account
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="text-decoration-none">
-                    Manage Deliveries
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="text-decoration-none">
-                    Orders
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="text-decoration-none">
-                    Payments
-                  </a>
-                </li>
-              </ul>
-              <div className="payment-buttons">
-                <Button variant="outline-light" title="Pay with Visa" style={{ backgroundColor: 'white' }}>
-                  <img src="/src/assets/visa.png" alt="Visa" height="15" />
-                </Button>
-                <Button variant="outline-light" title="Pay with Mastercard" style={{ backgroundColor: 'white' }}>
-                  <img src="/src/assets/mastercard.png" alt="Mastercard" height="15" />
-                </Button>
-                <Button variant="outline-light" title="Pay with PayPal" style={{ backgroundColor: 'white' }}>
-                  <img src="/src/assets/paypal.png" alt="PayPal" height="15" />
-                </Button>
-                <Button variant="outline-light" title="Pay with Apple Pay" style={{ backgroundColor: 'white' }}>
-                  <img src="/src/assets/applepay.png" alt="Apple Pay" height="15" />
-                </Button>
-                <Button variant="outline-light" title="Pay with Google Pay" style={{ backgroundColor: 'white' }}>
-                  <img src="/src/assets/gpay.png" alt="Google Pay" height="15" />
-                </Button>
-              </div>
-            </Col>
-          </Row>
-          <div className="footer-note">Swift.co © 2023-2025, All Rights Reserved</div>
-        </div>
+        <Container fluid className="p-0">
+          <div className="footer-content">
+            <Row className="gx-2 gy-2 align-items-start">
+              <Col md={4} lg={3} className="footer-col">
+                <h5 style={{ color: '#C00000', fontWeight: 'bold' }}><b>SWIFT.CO</b></h5>
+                <p className="text-muted">
+                  We bring you premium Ferrari merchandise that matches your passion for speed, power, and style.
+                </p>
+                <div className="social-icons">
+                  <Button variant="outline-light" title="Twitter" style={{ backgroundColor: 'white' }}>
+                    <img src="/src/assets/twitter.png" alt="Twitter" height="30" />
+                  </Button>
+                  <Button variant="outline-light" title="Facebook" style={{ backgroundColor: 'white' }}>
+                    <img src="/src/assets/facebook.png" alt="Facebook" height="30" />
+                  </Button>
+                  <Button variant="outline-light" title="Instagram" style={{ backgroundColor: 'white' }}>
+                    <img src="/src/assets/instagram.png" alt="Instagram" height="30" />
+                  </Button>
+                  <Button variant="outline-light" title="Github" style={{ backgroundColor: 'white' }}>
+                    <img src="/src/assets/github.png" alt="Github" height="30" />
+                  </Button>
+                </div>
+              </Col>
+
+              <Col md={3} lg={2} className="footer-col offset-md-1 offset-lg-3 text-end">
+                <h6>Help</h6>
+                <ul className="list-unstyled">
+                  <li>
+                    <a href="#" className="text-decoration-none">
+                      Delivery Details
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" className="text-decoration-none">
+                      Terms & Conditions
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" className="text-decoration-none">
+                      Privacy Policy
+                    </a>
+                  </li>
+                </ul>
+              </Col>
+
+              <Col md={3} lg={2} className="footer-col offset-lg-2 text-end">
+                <h6>FAQ</h6>
+                <ul className="list-unstyled">
+                  <li>
+                    <a href="#" className="text-decoration-none">
+                      Account
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" className="text-decoration-none">
+                      Manage Deliveries
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" className="text-decoration-none">
+                      Orders
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" className="text-decoration-none">
+                      Payments
+                    </a>
+                  </li>
+                </ul>
+              </Col>
+            </Row>
+
+            <hr className="footer-divider mt-4" />
+
+            <Row className="align-items-center justify-content-between">
+              <Col md="auto" className="footer-copyright">
+                <div className="text-muted">
+                  Swift.co © 2023-2025, All Rights Reserved
+                </div>
+              </Col>
+              <Col md="auto" className="d-flex">
+                <div className="payment-buttons d-flex gap-1">
+                  <Button variant="outline-light" title="Pay with Visa" style={{ backgroundColor: 'white' }}>
+                    <img src="/src/assets/visa.png" alt="Visa" height="15" />
+                  </Button>
+                  <Button variant="outline-light" title="Pay with Mastercard" style={{ backgroundColor: 'white' }}>
+                    <img src="/src/assets/mastercard.png" alt="Mastercard" height="15" />
+                  </Button>
+                  <Button variant="outline-light" title="Pay with PayPal" style={{ backgroundColor: 'white' }}>
+                    <img src="/src/assets/paypal.png" alt="PayPal" height="15" />
+                  </Button>
+                  <Button variant="outline-light" title="Pay with Apple Pay" style={{ backgroundColor: 'white' }}>
+                    <img src="/src/assets/applepay.png" alt="Apple Pay" height="15" />
+                  </Button>
+                  <Button variant="outline-light" title="Pay with Google Pay" style={{ backgroundColor: 'white' }}>
+                    <img src="/src/assets/gpay.png" alt="Google Pay" height="15" />
+                  </Button>
+                </div>
+              </Col>
+            </Row>
+          </div>
+        </Container>
       </footer>
     </div>
   );
