@@ -62,7 +62,7 @@ function Welcome() {
             <Navbar bg="light" data-bs-theme="light" className="navbar-custom" style={{ top: showNewArrivalsBanner ? '40px' : '0' }}>
                 <Container className="navbar-content">
                     <Navbar.Brand className="brand"><h3>
-                        <span style={{ color: '#C00000', fontWeight: 'bold' }}>SWIFT.CO</span>
+                        <span style={{ color: '#C00000', fontWeight: '1000', marginRight: '8px', marginLeft: '70px' }}>SWIFT.CO</span>
                     </h3></Navbar.Brand>
                     <Nav className="nav-links">
                         <Nav.Link as={Link} to="/shop" className="red-link">Shop</Nav.Link>
