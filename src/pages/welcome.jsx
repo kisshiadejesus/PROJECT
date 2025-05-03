@@ -473,138 +473,151 @@ function Welcome() {
                 </div>
 
                 <section className="browse-category"
-                    style={{
-                        padding: "1rem",
-                        marginTop: "1rem",
-                        backgroundColor: "#f8f9fa",
-                        width: "90%",
-                        margin: "1rem auto",
-                        borderRadius: "10px"
-                    }}
-                >
-                    <h2 style={{
-                        textAlign: "center",
-                        fontSize: "1.75rem",
-                        fontWeight: "bold",
-                        marginBottom: "2rem",
-                        textTransform: "uppercase" }}>BROWSE BY CATEGORY</h2>
-                    <Container>
-                        <Row xs={1} md={2} lg={4} className="g-3">
-                            <Col>
-                                <Card
+                style={{
+                    paddingTop: "2rem",     
+                    paddingLeft: "10rem", 
+                    paddingRight: "2rem",      
+                    paddingBottom: "2rem", 
+                    marginTop: "2rem",
+                    marginLeft: "5rem",
+                    marginRight: "5rem",
+                    marginBottom: "5rem",
+                    backgroundColor: "#f8f9fa",     
+                    borderRadius: "10px" ,
+                    alignItems: "center",
+                }}
+            >
+                <h2 style={{ 
+                    textAlign: "center", 
+                    fontSize: "2rem", 
+                    fontWeight: "bold", 
+                    marginBottom: "1.5rem", 
+                    textTransform: "uppercase" }}>BROWSE BY CATEGORY</h2>
+                <Container>
+                    <Row xs={1} md={2} className="g-4">
+                        <Col md={4}>
+                            <Link to="/men" style={{ textDecoration: "none"}}>
+                                <Card 
                                     style={{
-                                        height: "150px",
+                                        height: "280px",
                                         display: "flex",
                                         flexDirection: "column",
-                                        alignItems: "center",
                                         justifyContent: "center",
-                                        padding: "1rem",
+                                        alignItems: "center",
+                                        padding: "1.5rem",
                                         borderRadius: "10px",
                                         backgroundColor: "#ffffff",
-                                        boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
-                                        textAlign: "center",
+                                        boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1",
+                                        cursor: "pointer",
                                     }}
                                 >
-                                    <img
-                                        src={mens}
-                                        alt="Men"
+                                    <img 
+                                        src={mens} 
+                                        alt="Men" 
                                         style={{
-                                            maxWidth: "80%",
                                             maxHeight: "60%",
+                                            maxWidth: "80%",
                                             objectFit: "contain",
-                                            marginBottom: "0.5rem",
-                                        }}
+                                            marginBottom: "1rem",                                    }}
                                     />
-                                    <div style={{ fontWeight: "600", fontSize: "1rem" }}>Men</div>
+                                    <div style={{ fontWeight: "600", fontSize: "1.2rem", color: "inherit", textAlign: "center" }}>Men</div>
                                 </Card>
-                            </Col>
-                            <Col>
-                                <Card
+                            </Link>
+                        </Col>
+                        <Col>
+                            <Link to="/collectibles" style={{ textDecoration: "none" }}> 
+                                <Card 
                                     style={{
-                                        height: "150px",
+                                        height: "280px",
                                         display: "flex",
                                         flexDirection: "column",
-                                        alignItems: "center",
                                         justifyContent: "center",
-                                        padding: "1rem",
+                                        alignItems: "center",
+                                        padding: "1,5rem",
                                         borderRadius: "10px",
                                         backgroundColor: "#ffffff",
-                                        boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
-                                        textAlign: "center",
+                                        boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1",
+                                        cursor: "pointer",
                                     }}
                                 >
-                                    <img
-                                        src={womens}
-                                        alt="Women"
+                                    <img 
+                                        src={collectibles} 
+                                        alt="Collectibles" 
                                         style={{
-                                            maxWidth: "80%",
                                             maxHeight: "60%",
+                                            maxWidth: "80%",
                                             objectFit: "contain",
-                                            marginBottom: "0.5rem",
+                                            marginBottom: "1rem",
                                         }}
                                     />
-                                    <div style={{ fontWeight: "600", fontSize: "1rem" }}>Women</div>
+                                    <div style={{ fontWeight: "600", fontSize: "1.2rem", color: "inherit", textAlign: "center" }}>Collectibles</div>
                                 </Card>
-                            </Col>
-                            <Col>
-                                <Card
+                            </Link>
+                        </Col>
+                    </Row>
+                    <Row xs={1} md={2} className="g-4" style={{ marginTop: "1rem" }}>
+                        <Col> 
+                            <Link to="/accessories" style={{ textDecoration: "none" }}>
+                                <Card 
                                     style={{
-                                        height: "150px",
+                                        height: "280px",
                                         display: "flex",
                                         flexDirection: "column",
-                                        alignItems: "center",
                                         justifyContent: "center",
-                                        padding: "1rem",
+                                        alignItems: "center",
+                                        padding: "1.5rem",
                                         borderRadius: "10px",
                                         backgroundColor: "#ffffff",
-                                        boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
-                                        textAlign: "center",
+                                        boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
                                     }}
                                 >
-                                    <img
-                                        src={accessories}
-                                        alt="Accessories"
+                                    <img 
+                                        src={accessories} 
+                                        alt="Accessories" 
                                         style={{
-                                            maxWidth: "80%",
                                             maxHeight: "60%",
+                                            maxWdith: "80%",
                                             objectFit: "contain",
-                                            marginBottom: "0.5rem",
+                                            marginBottom: "1rem",
                                         }}
                                     />
-                                    <div style={{ fontWeight: "600", fontSize: "1rem" }}>Accessories</div>
+                                    <div style={{ fontWeight: "600", fontSize: "1.2rem", color: "inherit", textAlign: "center" }}>Accessories</div>
                                 </Card>
-                            </Col>
-                            <Col>
-                                <Card
+                            </Link>
+                        </Col>
+                        <Col md={4}>
+                            <Link to="/women" style={{ textDecoration: "none" }}>
+                                <Card 
                                     style={{
-                                        height: "150px",
+                                        height: "280px",
                                         display: "flex",
                                         flexDirection: "column",
-                                        alignItems: "center",
                                         justifyContent: "center",
-                                        padding: "1rem",
+                                        alignItems: "center",
+                                        padding: "1.5rem",
                                         borderRadius: "10px",
                                         backgroundColor: "#ffffff",
-                                        boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
-                                        textAlign: "center",
+                                        boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
                                     }}
                                 >
-                                    <img
-                                        src={collectibles}
-                                        alt="Collectibles"
+                                    <img 
+                                        src={womens} 
+                                        alt="Women" 
                                         style={{
-                                            maxWidth: "80%",
-                                            maxHeight: "60%",
+                                            maxHeight: "80%",
+                                            maxWidth: "100%",
                                             objectFit: "contain",
-                                            marginBottom: "0.5rem",
+                                            marginBottom: "1rem",
                                         }}
                                     />
-                                    <div style={{ fontWeight: "600", fontSize: "1rem" }}>Collectibles</div>
+                                    <div style={{ fontWeight: "600", fontSize: "1.2rem", color: "inherit", textAlign: "center" }}>Women</div>
                                 </Card>
-                            </Col>
-                        </Row>
-                    </Container>
-                </section>
+                            </Link>
+                        </Col>
+                    </Row>
+            </Container>
+        </section>
+    
 
                 <CustomerReviews />
 
