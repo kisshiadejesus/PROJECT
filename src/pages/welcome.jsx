@@ -378,8 +378,7 @@ function Welcome() {
             </div>
             <Container className="top-selling-container">
                 <div className="products">
-                    <Row className="gx-2 gy-2">
-                        <Col xs={12}>
+                    <Row className="gx-2 gy-2"><Col xs={12}>
                             <div ref={productContainerRef} className="product">
                                 <div className="product-items">
                                     <Button
@@ -488,9 +487,11 @@ function Welcome() {
                 }}
             >
                 <h2 style={{ 
-                    textAlign: "center", 
-                    fontSize: "2rem", 
-                    fontWeight: "bold", 
+                    textAlign: "center",
+                    marginLeft: "0rem", 
+                    marginRight: "8rem", 
+                    fontSize: "2.2rem", 
+                    fontWeight: 900, 
                     marginBottom: "1.5rem", 
                     textTransform: "uppercase" }}>BROWSE BY CATEGORY</h2>
                 <Container>
