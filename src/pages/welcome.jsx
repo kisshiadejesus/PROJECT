@@ -1,91 +1,173 @@
-import React from 'react';
-import { useNavigate, Link } from 'react-router-dom';
-import '../styles/welcome.css';
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import Button from 'react-bootstrap/Button';
-import formulaOneLogo from '../assets/02.png';
-import searchIcon from '../assets/search-icon.png';
-import UserIcon from '../assets/UserIcon.png';
-import CartIcon from '../assets/Cart.png';
-import NA1 from '../assets/NA1.jpg';
-import NA2 from '../assets/NA2.jpg';
-import NA3 from '../assets/NA3.jpg';
-import NA4 from '../assets/NA4.jpg';
-import TS1 from '../assets/TS1.jpg';
-import TS2 from '../assets/TS2.jpg';
-import TS3 from '../assets/TS3.jpg';
-import TS4 from '../assets/TS4.jpg';
-import { Col, Row, Card } from "react-bootstrap";
-//import statements for the images
-import twitterIcon from '../assets/twitter.png';
-import facebookIcon from '../assets/facebook.png';
-import instagramIcon from '../assets/instagram.png';
-import githubIcon from '../assets/github.png';
-import visaIcon from '../assets/visa.png';
-import mastercardIcon from '../assets/mastercard.png';
-import paypalIcon from '../assets/paypal.png';
-import applepayIcon from '../assets/applepay.png';
-import gpayIcon from '../assets/gpay.png';
-// Import category images (assuming you have these in your assets folder)
-import mens from '../assets/mens.png';
-import womens from '../assets/womens.png';
-import accessories from '../assets/accessories.png';
-import collectibles from '../assets/collectibles.png';
+import React, { useRef } from 'react';
+ import { useNavigate, Link } from 'react-router-dom';
+ import '../styles/welcome.css';
+ import Container from 'react-bootstrap/Container';
+ import Nav from 'react-bootstrap/Nav';
+ import Navbar from 'react-bootstrap/Navbar';
+ import Button from 'react-bootstrap/Button';
+ import formulaOneLogo from '../assets/02.png';
+ import searchIcon from '../assets/search-icon.png';
+ import UserIcon from '../assets/UserIcon.png';
+ import CartIcon from '../assets/Cart.png';
+ import NA1 from '../assets/NA1.jpg';
+ import NA2 from '../assets/NA2.jpg';
+ import NA3 from '../assets/NA3.jpg';
+ import NA4 from '../assets/NA4.jpg';
+ import TS1 from '../assets/TS1.jpg';
+ import TS2 from '../assets/TS2.jpg';
+ import TS3 from '../assets/TS3.jpg';
+ import TS4 from '../assets/TS4.jpg';
+ import { Col, Row, Card } from "react-bootstrap";
+ //import statements for the images
+ import twitterIcon from '../assets/twitter.png';
+ import facebookIcon from '../assets/facebook.png';
+ import instagramIcon from '../assets/instagram.png';
+ import githubIcon from '../assets/github.png';
+ import visaIcon from '../assets/visa.png';
+ import mastercardIcon from '../assets/mastercard.png';
+ import paypalIcon from '../assets/paypal.png';
+ import applepayIcon from '../assets/applepay.png';
+ import gpayIcon from '../assets/gpay.png';
+ // Import category images (assuming you have these in your assets folder)
+ import mens from '../assets/mens.png';
+ import womens from '../assets/womens.png';
+ import accessories from '../assets/accessories.png';
+ import collectibles from '../assets/collectibles.png';
 
-const customerReviewsData = [
-  {
-    name: 'Sarah M.',
-    rating: 5,
-    comment: '"I\'m blown away by the quality and style of the clothes I received from Shop.co. From casual wear to elegant dresses, every piece I\'ve bought has exceeded my expectations."',
-  },
-  {
-    name: 'Alex K.',
-    rating: 4,
-    comment: '"Finding clothes that align with my personal style used to be a challenge until I discovered Shop.co. The range of options they offer is truly remarkable, catering to a variety of tastes and occasions."',
-  },
-  {
-    name: 'James L.',
-    rating: 5,
-    comment: '"As someone who\'s always on the lookout for unique fashion pieces, I\'m thrilled to have stumbled upon Shop.co. The selection of clothes is not only diverse but also on-point with the latest trends."',
-  },
-  // Add more reviews here
-];
+ const customerReviewsData = [
+    {
+      name: 'Sarah M.',
+      rating: 5,
+      comment: '"I\'m blown away by the quality and style of the clothes I received from Shop.co. From casual wear to elegant dresses, every piece I\'ve bought has exceeded my expectations."',
+    },
+    {
+      name: 'Alex K.',
+      rating: 4,
+      comment: '"Finding clothes that align with my personal style used to be a challenge until I discovered Shop.co. The range of options they offer is truly remarkable, catering to a variety of tastes and occasions."',
+    },
+    {
+      name: 'James L.',
+      rating: 5,
+      comment: '"As someone who\'s always on the lookout for unique fashion pieces, I\'m thrilled to have stumbled upon Shop.co. The selection of clothes is not only diverse but also on-point with the latest trends."',
+    },
+    {
+      name: 'Moo',
+      rating: 4,
+      comment: '"As someone who\'s always on the lookout for unique fashion pieces, I\'m thrilled to have stumbled upon Shop.co. The selection of clothes is not only diverse but also on-point with the latest trends."',
+    },
+    {
+      name: 'Jane D.',
+      rating: 5,
+      comment: '"Excellent service and high-quality products! I will definitely be a returning customer."',
+    },
+    {
+      name: 'Peter S.',
+      rating: 3,
+      comment: '"The delivery was a bit slow, but the product itself was good."',
+    },
+    {
+      name: 'Emily R.',
+      rating: 5,
+      comment: '"Love the new collection! So many stylish and unique items to choose from."',
+    },
+    {
+      name: 'David B.',
+      rating: 4,
+      comment: '"Great value for money. Happy with my purchase."',
+    },
+    {
+      name: 'Sophia G.',
+      rating: 5,
+      comment: '"The quality of the materials is fantastic, and the designs are so trendy."',
+    },
+   ];
 
-const renderStars = (rating) => {
-  const stars = [];
-  for (let i = 0; i < 5; i++) {
-    stars.push(<span key={i} style={{ color: '#ffc107', fontSize: '1.2rem' }}>{i < rating ? '★' : '☆'}</span>);
-  }
-  return stars;
-};
+   const renderStars = (rating) => {
+    const stars = [];
+    for (let i = 0; i < 5; i++) {
+      stars.push(<span key={i} style={{ color: '#ffc107', fontSize: '1.1rem' }}>{i < rating ? '★' : '☆'}</span>);
+    }
+    return stars;
+   };
 
-function CustomerReviews() {
-  return (
-    <Container className="mt-5 mb-5">
-      <h2 className="text-center mb-4"><b>OUR HAPPY CUSTOMERS</b></h2>
-      <Row className="justify-content-center">
-        {customerReviewsData.map((review, index) => (
-          <Col key={index} md={4} className="mb-3">
-            <Card className="p-3 h-100">
-              <div className="d-flex align-items-center mb-2">
-                <h6 className="mb-0">{review.name}</h6>
-                <div className="ml-2">{renderStars(review.rating)}</div>
-              </div>
-              <Card.Text className="text-muted">{review.comment}</Card.Text>
-            </Card>
+   function CustomerReviews() {
+    const reviewsContainerRef = useRef(null);
+    const reviewsToShow = 3;
+    const checkmarkIcon = '✔'; // Unicode for checkmark
+
+    const scrollLeft = () => {
+      if (reviewsContainerRef.current) {
+        reviewsContainerRef.current.scrollLeft -= (3 * 320);
+      }
+    };
+
+    const scrollRight = () => {
+      if (reviewsContainerRef.current) {
+        reviewsContainerRef.current.scrollLeft += (3 * 320);
+      }
+    };
+
+    return (
+      <Container className="mt-5 mb-5">
+        <Row className="align-items-center mb-3">
+          <Col>
+            <h2 style={{ fontSize: '2rem', fontWeight: 'bold', color: '#212529' }}><b>OUR HAPPY CUSTOMERS</b></h2>
           </Col>
-        ))}
-      </Row>
-      {/* Optional: Add navigation arrows if you have more reviews and want a carousel-like behavior */}
-      {/* <div className="d-flex justify-content-center mt-3">
-        <button className="btn btn-outline-secondary mr-2">&larr;</button>
-        <button className="btn btn-outline-secondary ml-2">&rarr;</button>
-      </div> */}
-    </Container>
-  );
-}
+          <Col md="auto" className="text-end"> {/* Align the arrows to the right */}
+            <div style={{ display: 'flex', alignItems: 'center' }}>
+              <Button variant="link" onClick={scrollLeft} style={{ fontSize: '1.2rem', marginRight: '10px', color: '#212529', textDecoration: 'none' }}>←</Button>
+              <Button variant="link" onClick={scrollRight} style={{ fontSize: '1.2rem', color: '#212529', textDecoration: 'none' }}>→</Button>
+            </div>
+          </Col>
+        </Row>
+        <div
+          ref={reviewsContainerRef}
+          style={{
+            display: 'flex',
+            overflowX: 'auto',
+            paddingBottom: '15px',
+            scrollBehavior: 'smooth',
+            marginLeft: '-10px',
+            justifyContent: 'center', /* Center the cards horizontally */
+          }}
+        >
+          {customerReviewsData.map((review, index) => (
+            <div
+              key={index}
+              style={{
+                flex: '0 0 auto',
+                width: `calc(100% / ${reviewsToShow} - 20px)`,
+                marginRight: index < customerReviewsData.length - 1 ? '20px' : '0',
+              }}
+            >
+              <Card
+                style={{
+                  borderRadius: '10px',
+                  boxShadow: '0 4px 8px rgba(0, 0, 0, 0.05)',
+                  textAlign: 'left',
+                  border: '1px solid #e0e0e0',
+                  height: '220px',
+                  padding: '20px',
+                  display: 'flex',
+                  flexDirection: 'column',
+                }}
+              >
+                <div style={{ marginBottom: '15px' }}>
+                  <div style={{ color: '#ffc107', fontSize: '1.1rem', marginBottom: '3px' }}>{renderStars(review.rating)}</div>
+                  <Card.Title style={{ fontWeight: 'bold', marginBottom: '0', fontSize: '1rem', color: '#212529', display: 'flex', alignItems: 'center' }}>
+                    {review.name} <span style={{ color: '#28a745', fontSize: '0.9rem', marginLeft: '5px' }}>{checkmarkIcon}</span>
+                  </Card.Title>
+                </div>
+                <Card.Text style={{ fontSize: '0.9rem', color: '#6c757d', lineHeight: '1.5', marginTop: '10px' }}>
+                  {review.comment}
+                </Card.Text>
+              </Card>
+            </div>
+          ))}
+        </div>
+      </Container>
+    );
+   }
 
 function Welcome() {
     const navigate = useNavigate();
@@ -294,7 +376,6 @@ function Welcome() {
             <div className="title-container">
                 <h1> <b> TOP SELLING </b> </h1>
             </div>
-
             <Container className="top-selling-container">
                 <div className="products">
                     <Row className="gx-2 gy-2">
@@ -368,7 +449,7 @@ function Welcome() {
                                         </Button>
                                         <span className="product-name"> Scuderia Ferrari Race Lifestyle Colour Block T-Shirt by Puma </span>
                                         <div className="rating">
-                                            ★★★★☆ <span classNameclassName="rating-value">4.5/5</span>
+                                            ★★★★☆ <span className="rating-value">4.5/5</span>
                                         </div>
                                         <span className="product-price">$260</span>
                                     </div>
