@@ -18,6 +18,17 @@ import TS2 from '../assets/TS2.jpg';
 import TS3 from '../assets/TS3.jpg';
 import TS4 from '../assets/TS4.jpg';
 import { Col, Row } from "react-bootstrap";
+//import statements for the images
+import twitterIcon from '../assets/twitter.png';
+import facebookIcon from '../assets/facebook.png';
+import instagramIcon from '../assets/instagram.png';
+import githubIcon from '../assets/github.png';
+import visaIcon from '../assets/visa.png';
+import mastercardIcon from '../assets/mastercard.png';
+import paypalIcon from '../assets/paypal.png';
+import applepayIcon from '../assets/applepay.png';
+import gpayIcon from '../assets/gpay.png';
+
 
 function Welcome() {
     const navigate = useNavigate();
@@ -40,25 +51,25 @@ function Welcome() {
     };
 
     return (
-      <div className="welcome-container">
-          {showNewArrivalsBanner && (
-              <div className="new-arrivals-banner">
-                  <p>New Arrivals Just Dropped! <Link to="/new-arrivals" className="banner-link">Explore Now</Link></p>
-                  <button className="close-banner-button" onClick={handleCloseNewArrivalsBanner}>&times;</button>
-              </div>
-          )}
+        <div className="welcome-container">
+            {showNewArrivalsBanner && (
+                <div className="new-arrivals-banner">
+                    <p>New Arrivals Just Dropped! <Link to="/new-arrivals" className="banner-link">Explore Now</Link></p>
+                    <button className="close-banner-button" onClick={handleCloseNewArrivalsBanner}>&times;</button>
+                </div>
+            )}
 
-          <Navbar bg="light" data-bs-theme="light" className="navbar-custom" style={{ top: showNewArrivalsBanner ? '40px' : '0' }}>
-              <Container className="navbar-content">
-                  <Navbar.Brand className="brand"><h3>
-        <span style={{ color: '#C00000', fontWeight: '1000', marginRight: '8px', marginLeft: '70px'}}>SWIFT.CO</span>
-      </h3></Navbar.Brand>
-                  <Nav className="nav-links">
-                      <Nav.Link as={Link} to="/shop" className="red-link">Shop</Nav.Link>
-                      <Nav.Link as={Link} to="/on-sale" className="red-link">On Sale</Nav.Link>
-                      <Nav.Link as={Link} to="/new-arrivals" className="red-link">New Arrivals</Nav.Link>
-                      <Nav.Link as={Link} to="/about-us" className="red-link">About Us</Nav.Link>
-                  </Nav>
+            <Navbar bg="light" data-bs-theme="light" className="navbar-custom" style={{ top: showNewArrivalsBanner ? '40px' : '0' }}>
+                <Container className="navbar-content">
+                    <Navbar.Brand className="brand"><h3>
+                        <span style={{ color: '#C00000', fontWeight: 'bold' }}>SWIFT.CO</span>
+                    </h3></Navbar.Brand>
+                    <Nav className="nav-links">
+                        <Nav.Link as={Link} to="/shop" className="red-link">Shop</Nav.Link>
+                        <Nav.Link as={Link} to="/on-sale" className="red-link">On Sale</Nav.Link>
+                        <Nav.Link as={Link} to="/new-arrivals" className="red-link">New Arrivals</Nav.Link>
+                        <Nav.Link as={Link} to="/about-us" className="red-link">About Us</Nav.Link>
+                    </Nav>
 
                     <div className="search-bar">
                         <div className="search-wrapper">
@@ -323,7 +334,82 @@ function Welcome() {
                     </Row>
                 </div>
             </Container>
+            <footer className="footer">
+                <Container fluid className="p-0">
+                    <div className="footer-content">
+                        <Row className="gx-2 gy-2 align-items-start">
+                            <Col md={4} lg={3} className="footer-col">
+                                <h5 style={{ color: '#C00000', fontWeight: 'bold' }}><b>SWIFT.CO</b></h5>
+                                <p className="text-muted">
+                                    We bring you premium Ferrari merchandise that matches your passion for speed, power, and style.
+                                </p>
+                                <div className="social-icons">
+                                    <Button variant="outline-light" title="Twitter" style={{ backgroundColor: 'white' }}>
+                                        <img src={twitterIcon} alt="Twitter" height="30" />
+                                    </Button>
+                                    <Button variant="outline-light" title="Facebook" style={{ backgroundColor: 'white' }}>
+                                        <img src={facebookIcon} alt="Facebook" height="30" />
+                                    </Button>
+                                    <Button variant="outline-light" title="Instagram" style={{ backgroundColor: 'white' }}>
+                                        <img src={instagramIcon} alt="Instagram" height="30" />
+                                    </Button>
+                                    <Button variant="outline-light" title="Github" style={{ backgroundColor: 'white' }}>
+                                        <img src={githubIcon} alt="Github" height="30" />
+                                    </Button>
+                                </div>
+                            </Col>
 
+                            <Col md={3} lg={2} className="footer-col offset-md-1 offset-lg-3 text-end">
+                                <h6>Help</h6>
+                                <ul className="list-unstyled">
+                                    <li><Link to="#" className="text-decoration-none text-muted">Delivery Details</Link></li>
+                                    <li><Link to="#" className="text-decoration-none text-muted">Terms & Conditions</Link></li>
+                                    <li><Link to="#" className="text-decoration-none text-muted">Privacy Policy</Link></li>
+                                </ul>
+                            </Col>
+
+                            <Col md={3} lg={2} className="footer-col offset-lg-2 text-end">
+                                <h6>FAQ</h6>
+                                <ul className="list-unstyled">
+                                    <li><Link to="#" className="text-decoration-none text-muted">Account</Link></li>
+                                    <li><Link to="#" className="text-decoration-none text-muted">Manage Deliveries</Link></li>
+                                    <li><Link to="#" className="text-decoration-none text-muted">Orders</Link></li>
+                                    <li><Link to="#" className="text-decoration-none text-muted">Payments</Link></li>
+                                </ul>
+                            </Col>
+                        </Row>
+
+                        <hr className="footer-divider mt-4" />
+
+                        <Row className="align-items-center justify-content-between">
+                            <Col md="auto" className="footer-copyright">
+                                <div className="text-muted">
+                                    Swift.co © 2023-2025, All Rights Reserved
+                                </div>
+                            </Col>
+                            <Col md="auto" className="d-flex">
+                                <div className="payment-buttons d-flex gap-1">
+                                    <Button variant="outline-light" title="Pay with Visa" style={{ backgroundColor: 'white' }}>
+                                        <img src={visaIcon} alt="Visa" height="15" />
+                                    </Button>
+                                    <Button variant="outline-light" title="Pay with Mastercard" style={{ backgroundColor: 'white' }}>
+                                        <img src={mastercardIcon} alt="Mastercard" height="15" />
+                                    </Button>
+                                    <Button variant="outline-light" title="Pay with PayPal" style={{ backgroundColor: 'white' }}>
+                                        <img src={paypalIcon} alt="PayPal" height="15" />
+                                    </Button>
+                                    <Button variant="outline-light" title="Pay with Apple Pay" style={{ backgroundColor: 'white' }}>
+                                        <img src={applepayIcon} alt="Apple Pay" height="15" />
+                                    </Button>
+                                    <Button variant="outline-light" title="Pay with Google Pay" style={{ backgroundColor: 'white' }}>
+                                        <img src={gpayIcon} alt="Google Pay" height="15" />
+                                    </Button>
+                                </div>
+                            </Col>
+                        </Row>
+                    </div>
+                </Container>
+            </footer>
         </div>
     );
 }
