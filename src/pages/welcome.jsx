@@ -17,7 +17,7 @@ import TS1 from '../assets/TS1.jpg';
 import TS2 from '../assets/TS2.jpg';
 import TS3 from '../assets/TS3.jpg';
 import TS4 from '../assets/TS4.jpg';
-import { Col, Row } from "react-bootstrap";
+import { Col, Row, Card } from "react-bootstrap";
 //import statements for the images
 import twitterIcon from '../assets/twitter.png';
 import facebookIcon from '../assets/facebook.png';
@@ -28,7 +28,64 @@ import mastercardIcon from '../assets/mastercard.png';
 import paypalIcon from '../assets/paypal.png';
 import applepayIcon from '../assets/applepay.png';
 import gpayIcon from '../assets/gpay.png';
+// Import category images (assuming you have these in your assets folder)
+import mens from '../assets/mens.png';
+import womens from '../assets/womens.png';
+import accessories from '../assets/accessories.png';
+import collectibles from '../assets/collectibles.png';
 
+const customerReviewsData = [
+  {
+    name: 'Sarah M.',
+    rating: 5,
+    comment: '"I\'m blown away by the quality and style of the clothes I received from Shop.co. From casual wear to elegant dresses, every piece I\'ve bought has exceeded my expectations."',
+  },
+  {
+    name: 'Alex K.',
+    rating: 4,
+    comment: '"Finding clothes that align with my personal style used to be a challenge until I discovered Shop.co. The range of options they offer is truly remarkable, catering to a variety of tastes and occasions."',
+  },
+  {
+    name: 'James L.',
+    rating: 5,
+    comment: '"As someone who\'s always on the lookout for unique fashion pieces, I\'m thrilled to have stumbled upon Shop.co. The selection of clothes is not only diverse but also on-point with the latest trends."',
+  },
+  // Add more reviews here
+];
+
+const renderStars = (rating) => {
+  const stars = [];
+  for (let i = 0; i < 5; i++) {
+    stars.push(<span key={i} style={{ color: '#ffc107', fontSize: '1.2rem' }}>{i < rating ? '★' : '☆'}</span>);
+  }
+  return stars;
+};
+
+function CustomerReviews() {
+  return (
+    <Container className="mt-5 mb-5">
+      <h2 className="text-center mb-4"><b>OUR HAPPY CUSTOMERS</b></h2>
+      <Row className="justify-content-center">
+        {customerReviewsData.map((review, index) => (
+          <Col key={index} md={4} className="mb-3">
+            <Card className="p-3 h-100">
+              <div className="d-flex align-items-center mb-2">
+                <h6 className="mb-0">{review.name}</h6>
+                <div className="ml-2">{renderStars(review.rating)}</div>
+              </div>
+              <Card.Text className="text-muted">{review.comment}</Card.Text>
+            </Card>
+          </Col>
+        ))}
+      </Row>
+      {/* Optional: Add navigation arrows if you have more reviews and want a carousel-like behavior */}
+      {/* <div className="d-flex justify-content-center mt-3">
+        <button className="btn btn-outline-secondary mr-2">&larr;</button>
+        <button className="btn btn-outline-secondary ml-2">&rarr;</button>
+      </div> */}
+    </Container>
+  );
+}
 
 function Welcome() {
     const navigate = useNavigate();
@@ -311,7 +368,7 @@ function Welcome() {
                                         </Button>
                                         <span className="product-name"> Scuderia Ferrari Race Lifestyle Colour Block T-Shirt by Puma </span>
                                         <div className="rating">
-                                            ★★★★☆ <span className="rating-value">4.5/5</span>
+                                            ★★★★☆ <span classNameclassName="rating-value">4.5/5</span>
                                         </div>
                                         <span className="product-price">$260</span>
                                     </div>
@@ -333,6 +390,143 @@ function Welcome() {
                         </Col>
                     </Row>
                 </div>
+
+                <section className="browse-category"
+                    style={{
+                        padding: "1rem",
+                        marginTop: "1rem",
+                        backgroundColor: "#f8f9fa",
+                        width: "90%",
+                        margin: "1rem auto",
+                        borderRadius: "10px"
+                    }}
+                >
+                    <h2 style={{
+                        textAlign: "center",
+                        fontSize: "1.75rem",
+                        fontWeight: "bold",
+                        marginBottom: "2rem",
+                        textTransform: "uppercase" }}>BROWSE BY CATEGORY</h2>
+                    <Container>
+                        <Row xs={1} md={2} lg={4} className="g-3">
+                            <Col>
+                                <Card
+                                    style={{
+                                        height: "150px",
+                                        display: "flex",
+                                        flexDirection: "column",
+                                        alignItems: "center",
+                                        justifyContent: "center",
+                                        padding: "1rem",
+                                        borderRadius: "10px",
+                                        backgroundColor: "#ffffff",
+                                        boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
+                                        textAlign: "center",
+                                    }}
+                                >
+                                    <img
+                                        src={mens}
+                                        alt="Men"
+                                        style={{
+                                            maxWidth: "80%",
+                                            maxHeight: "60%",
+                                            objectFit: "contain",
+                                            marginBottom: "0.5rem",
+                                        }}
+                                    />
+                                    <div style={{ fontWeight: "600", fontSize: "1rem" }}>Men</div>
+                                </Card>
+                            </Col>
+                            <Col>
+                                <Card
+                                    style={{
+                                        height: "150px",
+                                        display: "flex",
+                                        flexDirection: "column",
+                                        alignItems: "center",
+                                        justifyContent: "center",
+                                        padding: "1rem",
+                                        borderRadius: "10px",
+                                        backgroundColor: "#ffffff",
+                                        boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
+                                        textAlign: "center",
+                                    }}
+                                >
+                                    <img
+                                        src={womens}
+                                        alt="Women"
+                                        style={{
+                                            maxWidth: "80%",
+                                            maxHeight: "60%",
+                                            objectFit: "contain",
+                                            marginBottom: "0.5rem",
+                                        }}
+                                    />
+                                    <div style={{ fontWeight: "600", fontSize: "1rem" }}>Women</div>
+                                </Card>
+                            </Col>
+                            <Col>
+                                <Card
+                                    style={{
+                                        height: "150px",
+                                        display: "flex",
+                                        flexDirection: "column",
+                                        alignItems: "center",
+                                        justifyContent: "center",
+                                        padding: "1rem",
+                                        borderRadius: "10px",
+                                        backgroundColor: "#ffffff",
+                                        boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
+                                        textAlign: "center",
+                                    }}
+                                >
+                                    <img
+                                        src={accessories}
+                                        alt="Accessories"
+                                        style={{
+                                            maxWidth: "80%",
+                                            maxHeight: "60%",
+                                            objectFit: "contain",
+                                            marginBottom: "0.5rem",
+                                        }}
+                                    />
+                                    <div style={{ fontWeight: "600", fontSize: "1rem" }}>Accessories</div>
+                                </Card>
+                            </Col>
+                            <Col>
+                                <Card
+                                    style={{
+                                        height: "150px",
+                                        display: "flex",
+                                        flexDirection: "column",
+                                        alignItems: "center",
+                                        justifyContent: "center",
+                                        padding: "1rem",
+                                        borderRadius: "10px",
+                                        backgroundColor: "#ffffff",
+                                        boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
+                                        textAlign: "center",
+                                    }}
+                                >
+                                    <img
+                                        src={collectibles}
+                                        alt="Collectibles"
+                                        style={{
+                                            maxWidth: "80%",
+                                            maxHeight: "60%",
+                                            objectFit: "contain",
+                                            marginBottom: "0.5rem",
+                                        }}
+                                    />
+                                    <div style={{ fontWeight: "600", fontSize: "1rem" }}>Collectibles</div>
+                                </Card>
+                            </Col>
+                        </Row>
+                    </Container>
+                </section>
+
+                <CustomerReviews />
+
             </Container>
             <footer className="footer">
                 <Container fluid className="p-0">
