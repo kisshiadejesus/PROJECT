@@ -171,18 +171,15 @@ import React, { useRef } from 'react';
 
 function Welcome() {
     const navigate = useNavigate();
-    const productContainerRef = React.useRef(null);
+
+    const topSellingContainerRef = React.useRef(null);
+    const newArrivalContainerRef = React.useRef(null);
+
     const [showNewArrivalsBanner, setShowNewArrivalsBanner] = React.useState(true);
 
     const handleLogout = () => {
         console.log('Logging out');
         navigate('/login');
-    };
-
-    const scrollRight = () => {
-        if (productContainerRef.current) {
-            productContainerRef.current.scrollLeft += 300;
-        }
     };
 
     const handleCloseNewArrivalsBanner = () => {
@@ -282,13 +279,13 @@ function Welcome() {
                 <div className="products">
                     <Row className="gx-2 gy-2">
                         <Col xs={12}>
-                            <div ref={productContainerRef} className="product">
+                            <div ref={newArrivalContainerRef} className="product">
                                 <div className="product-items">
                                     <Button
                                         onClick={() => {
-                                            if (productContainerRef.current) {
-                                                productContainerRef.current.scrollTo({
-                                                    left: productContainerRef.current.scrollLeft - 300,
+                                            if (newArrivalContainerRef.current) {
+                                                newArrivalContainerRef.current.scrollTo({
+                                                    left: newArrivalContainerRef.current.scrollLeft - 300,
                                                     behavior: 'smooth'
                                                 });
                                             }
@@ -356,9 +353,9 @@ function Welcome() {
 
                                 <Button
                                     onClick={() => {
-                                        if (productContainerRef.current) {
-                                            productContainerRef.current.scrollTo({
-                                                left: productContainerRef.current.scrollLeft + 300,
+                                        if (newArrivalContainerRef.current) {
+                                            newArrivalContainerRef.current.scrollTo({
+                                                left: newArrivalContainerRef.current.scrollLeft + 300,
                                                 behavior: 'smooth'
                                             });
                                         }
@@ -380,13 +377,13 @@ function Welcome() {
             <Container className="top-selling-container">
                 <div className="products">
                     <Row className="gx-2 gy-2"><Col xs={12}>
-                            <div ref={productContainerRef} className="product">
+                            <div ref={topSellingContainerRef} className="product">
                                 <div className="product-items">
                                     <Button
                                         onClick={() => {
-                                            if (productContainerRef.current) {
-                                                productContainerRef.current.scrollTo({
-                                                    left: productContainerRef.current.scrollLeft - 300,
+                                            if (topSellingContainerRef.current) {
+                                                topSellingContainerRef.current.scrollTo({
+                                                    left: topSellingContainerRef.current.scrollLeft - 300,
                                                     behavior: 'smooth'
                                                 });
                                             }
@@ -457,9 +454,9 @@ function Welcome() {
 
                                 <Button
                                     onClick={() => {
-                                        if (productContainerRef.current) {
-                                            productContainerRef.current.scrollTo({
-                                                left: productContainerRef.current.scrollLeft + 300,
+                                        if (topSellingContainerRef.current) {
+                                            topSellingContainerRef.current.scrollTo({
+                                                left: topSellingContainerRef.current.scrollLeft + 300,
                                                 behavior: 'smooth'
                                             });
                                         }
