@@ -8,6 +8,7 @@ import React, { useRef } from 'react';
  import formulaOneLogo from '../assets/02.png';
  import searchIcon from '../assets/search-icon.png';
  import UserIcon from '../assets/UserIcon.png';
+ import backgroundImage from '../assets/03.jpeg';
  import CartIcon from '../assets/Cart.png';
  import NA1 from '../assets/NA1.jpg';
  import NA2 from '../assets/NA2.jpg';
@@ -111,7 +112,7 @@ import React, { useRef } from 'react';
       <Container className="mt-5 mb-5">
         <Row className="align-items-center mb-3">
           <Col>
-            <h2 style={{ fontSize: '2rem', fontWeight: 'bold', color: '#212529' }}><b>OUR HAPPY CUSTOMERS</b></h2>
+            <h1 style={{ fontSize: '2.5rem', fontWeight: 'bold', color: '#212529' }}><b>OUR HAPPY CUSTOMERS</b></h1>
           </Col>
           <Col md="auto" className="text-end"> {/* Align the arrows to the right */}
             <div style={{ display: 'flex', alignItems: 'center' }}>
@@ -171,18 +172,15 @@ import React, { useRef } from 'react';
 
 function Welcome() {
     const navigate = useNavigate();
-    const productContainerRef = React.useRef(null);
+
+    const topSellingContainerRef = React.useRef(null);
+    const newArrivalContainerRef = React.useRef(null);
+
     const [showNewArrivalsBanner, setShowNewArrivalsBanner] = React.useState(true);
 
     const handleLogout = () => {
         console.log('Logging out');
         navigate('/login');
-    };
-
-    const scrollRight = () => {
-        if (productContainerRef.current) {
-            productContainerRef.current.scrollLeft += 300;
-        }
     };
 
     const handleCloseNewArrivalsBanner = () => {
@@ -238,8 +236,7 @@ function Welcome() {
                     <h2 className="welcome-title">FIND FERRARI MERCH THAT</h2>
                     <h2 className="welcome-title">MATCHES YOUR STYLE</h2>
                     <p className="welcome-subtitle">Explore our collection of authentic Ferrari merchandise, crafted for
-                        fans who live for
-                        speed, style, and legacy.</p>
+                        fans who live for speed, style, and legacy.</p>
                     <Button variant="none" onClick={() => navigate('/shop')} className="welcome-button">
                         Shop Now
                     </Button>
@@ -274,20 +271,20 @@ function Welcome() {
             <br></br>
 
             <div className="title-container">
-                <h1> <b> NEW ARRIVALS </b> </h1>
-            </div>
+    <h1 className='title-text' style={{ fontWeight: 900, fontSize: '2.5rem' }}> NEW ARRIVALS </h1>
+</div>
 
             <Container className="new-arrival-container">
                 <div className="products">
                     <Row className="gx-2 gy-2">
                         <Col xs={12}>
-                            <div ref={productContainerRef} className="product">
+                            <div ref={newArrivalContainerRef} className="product">
                                 <div className="product-items">
                                     <Button
                                         onClick={() => {
-                                            if (productContainerRef.current) {
-                                                productContainerRef.current.scrollTo({
-                                                    left: productContainerRef.current.scrollLeft - 300,
+                                            if (newArrivalContainerRef.current) {
+                                                newArrivalContainerRef.current.scrollTo({
+                                                    left: newArrivalContainerRef.current.scrollLeft - 300,
                                                     behavior: 'smooth'
                                                 });
                                             }
@@ -355,9 +352,9 @@ function Welcome() {
 
                                 <Button
                                     onClick={() => {
-                                        if (productContainerRef.current) {
-                                            productContainerRef.current.scrollTo({
-                                                left: productContainerRef.current.scrollLeft + 300,
+                                        if (newArrivalContainerRef.current) {
+                                            newArrivalContainerRef.current.scrollTo({
+                                                left: newArrivalContainerRef.current.scrollLeft + 300,
                                                 behavior: 'smooth'
                                             });
                                         }
@@ -374,18 +371,18 @@ function Welcome() {
             <hr className="divider mt-4" />
 
             <div className="title-container">
-                <h1> <b> TOP SELLING </b> </h1>
-            </div>
+    <h1 className='title-text' style={{ fontWeight: 900, fontSie: '2.5rem' }}> TOP SELLING </h1>
+</div>
             <Container className="top-selling-container">
                 <div className="products">
                     <Row className="gx-2 gy-2"><Col xs={12}>
-                            <div ref={productContainerRef} className="product">
+                            <div ref={topSellingContainerRef} className="product">
                                 <div className="product-items">
                                     <Button
                                         onClick={() => {
-                                            if (productContainerRef.current) {
-                                                productContainerRef.current.scrollTo({
-                                                    left: productContainerRef.current.scrollLeft - 300,
+                                            if (topSellingContainerRef.current) {
+                                                topSellingContainerRef.current.scrollTo({
+                                                    left: topSellingContainerRef.current.scrollLeft - 300,
                                                     behavior: 'smooth'
                                                 });
                                             }
@@ -456,9 +453,9 @@ function Welcome() {
 
                                 <Button
                                     onClick={() => {
-                                        if (productContainerRef.current) {
-                                            productContainerRef.current.scrollTo({
-                                                left: productContainerRef.current.scrollLeft + 300,
+                                        if (topSellingContainerRef.current) {
+                                            topSellingContainerRef.current.scrollTo({
+                                                left: topSellingContainerRef.current.scrollLeft + 300,
                                                 behavior: 'smooth'
                                             });
                                         }
@@ -486,14 +483,14 @@ function Welcome() {
                     alignItems: "center",
                 }}
             >
-                <h2 style={{ 
+                <h1 style={{ 
                     textAlign: "center",
                     marginLeft: "0rem", 
                     marginRight: "8rem", 
-                    fontSize: "2.2rem", 
+                    fontSize: "2.5rem", 
                     fontWeight: 900, 
                     marginBottom: "1.5rem", 
-                    textTransform: "uppercase" }}>BROWSE BY CATEGORY</h2>
+                    textTransform: "uppercase" }}>BROWSE BY CATEGORY</h1>
                 <Container>
                     <Row xs={1} md={2} className="g-4">
                         <Col md={4}>
