@@ -271,8 +271,14 @@ function Welcome() {
             <br></br>
 
             <div className="title-container">
+<<<<<<< HEAD
     <h1 className='title-text' style={{ fontWeight: 900, fontSize: '2.5rem' }}> NEW ARRIVALS </h1>
 </div>
+=======
+                <h1 className='title-text'> New Arrival </h1>
+
+            </div>
+>>>>>>> origin/main
 
             <Container className="new-arrival-container">
                 <div className="products">
@@ -371,8 +377,13 @@ function Welcome() {
             <hr className="divider mt-4" />
 
             <div className="title-container">
+<<<<<<< HEAD
     <h1 className='title-text' style={{ fontWeight: 900, fontSie: '2.5rem' }}> TOP SELLING </h1>
 </div>
+=======
+                <h1 className='title-text'> TOP SELLING </h1>
+            </div>
+>>>>>>> origin/main
             <Container className="top-selling-container">
                 <div className="products">
                     <Row className="gx-2 gy-2"><Col xs={12}>
