@@ -300,7 +300,7 @@ function Welcome() {
                                             <img src={NA1} alt="Scuderia Ferrari 2025 Team Polo"
                                                 className="product-image" />
                                         </Button>
-                                        <span className="product-name"> Scuderia Ferrari 2025 Team Polo </span>
+                                        <span className="product-name"><b> Scuderia Ferrari 2025 Team Polo </b></span>
                                         <div className="rating">
                                             ★★★★☆ <span className="rating-value">4.5/5</span>
                                         </div>
@@ -315,7 +315,7 @@ function Welcome() {
                                                 alt="Scuderia Ferrari Lewis Hamilton LookSmart Model Helmet"
                                                 className="product-image" />
                                         </Button>
-                                        <span className="product-name">Scuderia Ferrari Lewis Hamilton LookSmart Model Helmet</span>
+                                        <span className="product-name"><b> Scuderia Ferrari Lewis Hamilton LookSmart Model Helmet </b></span>
                                         <div className="rating">
                                             ★★★★☆ <span className="rating-value">4.5/5</span>
                                         </div>
@@ -329,7 +329,7 @@ function Welcome() {
                                                 alt="Scuderia Ferrari Puma Team Knitted Polo - Red"
                                                 className="product-image" />
                                         </Button>
-                                        <span className="product-name">Scuderia Ferrari Puma Team Knitted Polo - Red</span>
+                                        <span className="product-name"><b> Scuderia Ferrari Puma Team Knitted Polo - Red </b></span>
                                         <div className="rating">
                                             ★★★★☆ <span className="rating-value">4.5/5</span>
                                         </div>
@@ -342,7 +342,7 @@ function Welcome() {
                                             <img src={NA4} alt="Scuderia Ferrari 2025 Team 1/2 Zip Sweat"
                                                 className="product-image" />
                                         </Button>
-                                        <span className="product-name">Scuderia Ferrari 2025 Team 1/2 Zip Sweat </span>
+                                        <span className="product-name"><b> Scuderia Ferrari 2025 Team 1/2 Zip Sweat </b></span>
                                         <div className="rating">
                                             ★★★★☆ <span className="rating-value">4.5/5</span>
                                         </div>
@@ -398,7 +398,7 @@ function Welcome() {
                                             <img src={TS1} alt="Scuderia Ferrari 2025 Team T-Shirt"
                                                 className="product-image" />
                                         </Button>
-                                        <span className="product-name"> Scuderia Ferrari 2025 Team T-Shirt </span>
+                                        <span className="product-name"><b> Scuderia Ferrari 2025 Team T-Shirt </b></span>
                                         <div className="rating">
                                             ★★★★★ <span className="rating-value">5/5</span>
                                         </div>
@@ -414,7 +414,7 @@ function Welcome() {
                                                 alt="Scuderia Ferrari 2025 Team Charles Leclerc Cap - Red"
                                                 className="product-image" />
                                         </Button>
-                                        <span className="product-name">Scuderia Ferrari 2025 Team Charles Leclerc Cap - Red</span>
+                                        <span className="product-name"><b> Scuderia Ferrari 2025 Team Charles Leclerc Cap - Red </b></span>
                                         <div className="rating">
                                             ★★★★☆ <span className="rating-value">4/5</span>
                                         </div>
@@ -429,7 +429,7 @@ function Welcome() {
                                                 alt="Scuderia Ferrari Puma Large Shield Hooded Sweat - Red"
                                                 className="product-image" />
                                         </Button>
-                                        <span className="product-name">Scuderia Ferrari Puma Large Shield Hooded Sweat - Red</span>
+                                        <span className="product-name"><b> Scuderia Ferrari Puma Large Shield Hooded Sweat - Red </b></span>
                                         <div className="rating">
                                             ★★★☆☆ <span className="rating-value">3/5</span>
                                         </div>
@@ -443,7 +443,7 @@ function Welcome() {
                                             <img src={TS4} alt="Scuderia Ferrari Race Lifestyle Colour Block T-Shirt by Puma"
                                                 className="product-image" />
                                         </Button>
-                                        <span className="product-name"> Scuderia Ferrari Race Lifestyle Colour Block T-Shirt by Puma </span>
+                                        <span className="product-name"><b> Scuderia Ferrari Race Lifestyle Colour Block T-Shirt by Puma </b></span>
                                         <div className="rating">
                                             ★★★★☆ <span className="rating-value">4.5/5</span>
                                         </div>
