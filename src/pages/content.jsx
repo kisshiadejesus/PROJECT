@@ -27,62 +27,126 @@ import shirt7 from '../assets/shirt-7.jpeg';
 import shirt8 from '../assets/shirt-8.jpeg';
 import shirt9 from '../assets/shirt-9.jpeg';
 
+// Import new shirt images
+import shirt10 from '../assets/shirt-10.jpeg';
+import shirt11 from '../assets/shirt-11.jpeg';
+import shirt12 from '../assets/shirt-12.jpeg';
+import shirt13 from '../assets/shirt-13.jpeg';
+import shirt14 from '../assets/shirt-14.jpeg';
+import shirt15 from '../assets/shirt-15.jpeg';
+import shirt16 from '../assets/shirt-16.jpeg';
+import shirt17 from '../assets/shirt-17.jpeg';
+import shirt18 from '../assets/shirt-18.jpeg';
 
 const products = [
     {
         name: 'Scuderia Ferrari 2025 Team Polo',
-        price: 102.00, // Changed to number for sorting
+        price: 102.00,
         image: shirt1,
         rating: '5/5',
     },
     {
         name: 'Scuderia Ferrari 2025 Drivers Oversized T-Shirt - White',
-        price: 97.00,  // Changed to number for sorting
+        price: 97.00,
         image: shirt2,
         rating: '4/5',
     },
     {
         name: 'Scuderia Ferrari 2025 Team T-Shirt - Mens',
-        price: 80.00,  // Changed to number for sorting
+        price: 80.00,
         image: shirt3,
         rating: '5/5',
     },
     {
         name: 'Scuderia Ferrari Puma Team Knitted Polo - Red',
-        price: 194.00, // Changed to number for sorting
+        price: 194.00,
         image: shirt4,
         rating: '3/5',
     },
     {
         name: 'Scuderia Ferrari 2025 Drivers Oversized T-Shirt - Red',
-        price: 82.00,  // Changed to number for sorting
+        price: 82.00,
         image: shirt5,
         rating: '5/5',
     },
     {
         name: 'Scuderia Ferrari 2025 Team 1/2 Zip Sweat',
-        price: 125.50, // Changed to number for sorting
+        price: 125.50,
         image: shirt6,
         rating: '4/5',
     },
     {
         name: 'Scuderia Ferrari 2025 Team 1/2 Zip Sweat',
-        price: 75.00,  // Changed to number for sorting
+        price: 75.00,
         image: shirt7,
         rating: '4/5',
     },
     {
         name: 'Scuderia Ferrari Puma Classic Polo - Red',
-        price: 90.00,  // Changed to number for sorting
+        price: 90.00,
         image: shirt8,
         rating: '5/5',
     },
      {
         name: 'Scuderia Ferrari 2025 Team Softshell Jacket',
-        price: 110.00, // Changed to number for sorting
+        price: 110.00,
         image: shirt9,
         rating: '5/5',
-    }
+    },
+    {
+        name: 'Scuderia Ferrari Puma Special Edition Miami Hoodie - White',
+        price: 60.00,
+        image: shirt10,
+        rating: '4/5',
+    },
+    {
+        name: 'Scuderia Ferrari Race Lifestyle Colour Block T-Shirt by Puma',
+        price: 70.00,
+        image: shirt11,
+        rating: '5/5',
+    },
+    {
+        name: 'Scuderia Ferrari Race MT7 Polo by Puma - White',
+        price: 85.00,
+        image: shirt12,
+        rating: '5/5',
+    },
+    {
+        name: 'Scuderia Ferrari Puma Special Edition Miami T7 Jacket - Dark Crimson - Unisex',
+        price: 95.00,
+        image: shirt13,
+        rating: '4/5',
+    },
+    {
+        name: 'Scuderia Ferrari Race MT7 T-Shirt by Puma - Yellow',
+        price: 105.00,
+        image: shirt14,
+        rating: '4/5',
+    },
+    {
+        name: 'Scuderia Ferrari Scuderia Ferrari Puma Shield Hooded Sweat - Red - Kids',
+        price: 115.00,
+        image: shirt15,
+        rating: '5/5',
+    },
+    {
+        name: 'Scuderia Ferrari Puma Classic Polo - Black',
+        price: 50.00,
+        image: shirt16,
+        rating: '3/5',
+    },
+    {
+        name: 'Scuderia Ferrari Race Premium Hoodie by Puma - Red',
+        price: 78.00,
+        image: shirt17,
+        rating: '4/5',
+    },
+    {
+        name: 'Scuderia Ferrari Race Jersey Polo by Puma',
+        price: 92.00,
+        image: shirt18,
+        rating: '5/5',
+    },
 ];
 
 // Function to generate star icons
@@ -111,12 +175,12 @@ const renderStars = (rating) => {
 
     for (let i = 0; i < maxRating; i++) {
         if (i < fullStars) {
-            stars.push(<span key={`full-${i}`} style={{ color: '#ffd700', fontSize: '1.2rem' }}>★</span>); // Full star
+            stars.push(<span key={`full-${i}`} style={{ color: '#ffd700', fontSize: '1.2rem' }}>★</span>); 
         } else if (i === fullStars && halfStar) {
-            stars.push(<span key={`half-${i}`} style={{ color: '#ffd700', fontSize: '1.2rem' }}>★</span>); // Half star (using full star)
+            stars.push(<span key={`half-${i}`} style={{ color: '#ffd700', fontSize: '1.2rem' }}>★</span>); 
         }
         else {
-            stars.push(<span key={`empty-${i}`} style={{ color: '#ddd', fontSize: '1.2rem' }}>☆</span>); // Empty star
+            stars.push(<span key={`empty-${i}`} style={{ color: '#ddd', fontSize: '1.2rem' }}>☆</span>); 
         }
     }
     return { stars, ratingText }; // Return both stars and rating text
@@ -125,8 +189,11 @@ const renderStars = (rating) => {
 function Content() {
     const [showNewArrivalsBanner, setShowNewArrivalsBanner] = useState(true);
     const [searchQuery, setSearchQuery] = useState('');
-    const [sortBy, setSortBy] = useState('Most Popular'); // Default sort option
-    const [sortedProducts, setSortedProducts] = useState(products); // State for sorted products
+    const [sortBy, setSortBy] = useState('Most Popular'); 
+    const [sortedProducts, setSortedProducts] = useState(products); 
+
+    const productsPerPage = 9; 
+    const [currentPage, setCurrentPage] = useState(1); 
 
     const handleCloseNewArrivalsBanner = () => {
         setShowNewArrivalsBanner(false);
@@ -142,7 +209,7 @@ function Content() {
 
       // Function to sort products
     const sortProducts = (productsToSort, sortType) => {
-        let sorted = [...productsToSort]; // Create a copy to avoid mutating original state
+        let sorted = [...productsToSort]; 
 
         switch (sortType) {
             case 'Price: Low to High':
@@ -151,34 +218,49 @@ function Content() {
             case 'Price: High to Low':
                 sorted.sort((a, b) => b.price - a.price);
                 break;
-            default: // Most Popular (original order)
+            default: 
                 break;
         }
         return sorted;
     };
 
-    // useEffect to apply sorting whenever sortBy or searchQuery changes
-      useEffect(() => {
+    useEffect(() => {
+        console.log("Search Query:", searchQuery); 
         const filtered = products.filter(product =>
-            product.name.toLowerCase().includes(searchQuery.toLowerCase())
+          product.name.toLowerCase().includes(searchQuery.toLowerCase())
         );
+        console.log("Filtered:", filtered); 
         const sorted = sortProducts(filtered, sortBy);
+        console.log("Sorted:", sorted); 
         setSortedProducts(sorted);
-    }, [sortBy, searchQuery]);
+      }, [sortBy, searchQuery]);
+
+    // Calculate the indices of the products to display on the current page
+    const indexOfLastProduct = currentPage * productsPerPage;
+    const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
+    const currentProducts = sortedProducts.slice(indexOfFirstProduct, indexOfLastProduct);
+
+    // Change page
+    const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
 
     const StyledPagination = () => {
+        let items = [];
+        for (let number = 1; number <= Math.ceil(sortedProducts.length / productsPerPage); number++) {
+          items.push(
+            <Pagination.Item key={number} active={number === currentPage} onClick={() => paginate(number)}>
+              {number}
+            </Pagination.Item>,
+          );
+        }
+
         return (
             <Pagination className="custom-pagination">
-                <Pagination.Prev className="custom-page-item styled-prev-next" style={{ marginRight: '5rem' }}>
+                <Pagination.Prev onClick={() => paginate(currentPage - 1)} disabled={currentPage === 1} className="custom-page-item styled-prev-next" style={{ marginRight: '5rem' }}>
                   <span style={{ color: '#000' }}>← Previous</span>
                 </Pagination.Prev>
-                <Pagination.Item className="custom-page-item active-page">{1}</Pagination.Item>
-                <Pagination.Item className="custom-page-item no-box-style">{2}</Pagination.Item>
-                <Pagination.Item className="custom-page-item no-box-style">{3}</Pagination.Item>
-                <Pagination.Ellipsis className="custom-page-item no-box-style" />
-                <Pagination.Item className="custom-page-item no-box-style">{7}</Pagination.Item>
-                <Pagination.Next className="custom-page-item styled-prev-next" style={{ marginLeft: '5rem' }}>
+                {items}
+                <Pagination.Next onClick={() => paginate(currentPage + 1)} disabled={currentPage === Math.ceil(sortedProducts.length / productsPerPage)} className="custom-page-item styled-prev-next" style={{ marginLeft: '5rem' }}>
                   <span style={{ color: '#000' }}>Next →</span>
                 </Pagination.Next>
                 <style jsx global>{`
@@ -330,25 +412,35 @@ function Content() {
                 </div>
                 {/* Added text with reduced spacing and flexbox */}
                 <div style={{ display: 'flex', justifyContent: 'flex-end',  marginBottom: '1.5rem', fontSize: '0.9rem', color: '#666' }}>
-                    <div style={{ display: 'flex', gap: '10px', alignItems: 'baseline', marginTop: '1rem' }}>
-                        <div>Showing 1-10 of {sortedProducts.length} Products</div>
-                        <div>
-                            Sort by:
-                            <select
-                                style={{ marginLeft: '0.5rem', padding: '0.25rem', borderRadius: '4px', borderColor: '#ccc' }}
-                                value={sortBy}
-                                onChange={handleSortChange}
-                            >
-                                <option>Most Popular</option>
-                                <option>Price: Low to High</option>
-                                <option>Price: High to Low</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
+    <div style={{ display: 'flex', gap: '10px', alignItems: 'baseline', marginTop: '1rem' }}>
+        <div>
+            {sortedProducts.length > 0 ? (
+                <span>
+                    Showing {indexOfFirstProduct + 1} - {Math.min(indexOfLastProduct, sortedProducts.length)} of {sortedProducts.length} Products
+                </span>
+            ) : (
+                <span>
+                    Showing 0 - 0 of 0 Products
+                </span>
+            )}
+        </div>
+        <div>
+            Sort by:
+            <select
+                style={{ marginLeft: '0.5rem', padding: '0.25rem', borderRadius: '4px', borderColor: '#ccc' }}
+                value={sortBy}
+                onChange={handleSortChange}
+            >
+                <option>Most Popular</option>
+                <option>Price: Low to High</option>
+                <option>Price: High to Low</option>
+            </select>
+        </div>
+    </div>
+</div>
                 <div style={{ clear: 'both' }}></div>
                 <Row xs={1} sm={2} md={3} lg={3} className="g-3 justify-content-center">
-                    {sortedProducts.slice(0, 9).map((product, index) => (
+                    {currentProducts.map((product, index) => (
                         <Col key={index} className="d-flex align-items-stretch justify-content-center"  >
                             <Link to="/product" style={{ textDecoration: 'none' }}>
                                 <Card className="h-100 border-0" style={{ maxWidth: '330px' }}>
@@ -558,4 +650,3 @@ function Content() {
 }
 
 export default Content;
-
