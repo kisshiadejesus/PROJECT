@@ -7,7 +7,7 @@ import React, { useRef } from 'react';
  import Button from 'react-bootstrap/Button';
  import formulaOneLogo from '../assets/02.png';
  import searchIcon from '../assets/search-icon.png';
- import UserIcon from '../assets/UserIcon.png';
+ import UserIcon from '../assets/UserIcon.png'; 
  import backgroundImage from '../assets/03.jpeg';
  import CartIcon from '../assets/Cart.png';
  import NA1 from '../assets/NA1.jpg';
@@ -114,7 +114,7 @@ import React, { useRef } from 'react';
           <Col>
             <h1 style={{ fontSize: '2.5rem', fontWeight: 'bold', color: '#212529' }}><b>OUR HAPPY CUSTOMERS</b></h1>
           </Col>
-          <Col md="auto" className="text-end"> {/* Align the arrows to the right */}
+          <Col md="auto" className="text-end"> 
             <div style={{ display: 'flex', alignItems: 'center' }}>
               <Button variant="link" onClick={scrollLeft} style={{ fontSize: '1.2rem', marginRight: '10px', color: '#212529', textDecoration: 'none' }}>←</Button>
               <Button variant="link" onClick={scrollRight} style={{ fontSize: '1.2rem', color: '#212529', textDecoration: 'none' }}>→</Button>
@@ -129,7 +129,7 @@ import React, { useRef } from 'react';
             paddingBottom: '15px',
             scrollBehavior: 'smooth',
             marginLeft: '-10px',
-            justifyContent: 'center', /* Center the cards horizontally */
+            justifyContent: 'center', 
           }}
         >
           {customerReviewsData.map((review, index) => (
@@ -195,7 +195,7 @@ function Welcome() {
                     <button className="close-banner-button" onClick={handleCloseNewArrivalsBanner}>&times;</button>
                 </div>
             )}
-
+            
             <Navbar bg="light" data-bs-theme="light" className="navbar-custom" style={{ top: showNewArrivalsBanner ? '40px' : '0' }}>
                 <Container className="navbar-content">
                     <Navbar.Brand className="brand"><h3>
@@ -207,7 +207,7 @@ function Welcome() {
                         <Nav.Link as={Link} to="/new-arrivals" className="red-link">New Arrivals</Nav.Link>
                         <Nav.Link as={Link} to="/about-us" className="red-link">About Us</Nav.Link>
                     </Nav>
-
+                        
                     <div className="search-bar">
                         <div className="search-wrapper">
                             <img src={searchIcon} alt="Search Icon" className="search-icon" />
@@ -233,14 +233,16 @@ function Welcome() {
 
             <div className="welcome-image-container" style={{ paddingTop: showNewArrivalsBanner ? '130px' : '90px' }}>
                 <Container className="welcome-text-container">
-                    <h2 className="welcome-title">FIND FERRARI MERCH THAT</h2>
-                    <h2 className="welcome-title">MATCHES YOUR STYLE</h2>
-                    <p className="welcome-subtitle">Explore our collection of authentic Ferrari merchandise, crafted for
-                        fans who live for speed, style, and legacy.</p>
-                    <Button variant="none" onClick={() => navigate('/shop')} className="welcome-button">
-                        Shop Now
-                    </Button>
+                <h2 className="welcome-title">FIND FERRARI MERCH THAT</h2>
+                <h2 className="welcome-title">MATCHES YOUR STYLE</h2>
+                <p className="welcome-subtitle">
+                    Explore our collection of authentic Ferrari merchandise, crafted for fans who live for speed, style, and legacy.
+                </p>
+                <Button variant="none" onClick={() => navigate('/shop')} className="welcome-button">
+                    Shop Now
+                </Button>
                 </Container>
+                
                 <div className="welcome-stats-wrapper">
                     <div className="welcome-stats-bar">
                         <div>
@@ -300,7 +302,7 @@ function Welcome() {
                                             <img src={NA1} alt="Scuderia Ferrari 2025 Team Polo"
                                                 className="product-image" />
                                         </Button>
-                                        <span className="product-name"><b> Scuderia Ferrari 2025 Team Polo </b></span>
+                                        <span className="product-name"> Scuderia Ferrari 2025 Team Polo </span>
                                         <div className="rating">
                                             ★★★★☆ <span className="rating-value">4.5/5</span>
                                         </div>
@@ -315,7 +317,7 @@ function Welcome() {
                                                 alt="Scuderia Ferrari Lewis Hamilton LookSmart Model Helmet"
                                                 className="product-image" />
                                         </Button>
-                                        <span className="product-name"><b> Scuderia Ferrari Lewis Hamilton LookSmart Model Helmet </b></span>
+                                        <span className="product-name">Scuderia Ferrari Lewis Hamilton LookSmart Model Helmet</span>
                                         <div className="rating">
                                             ★★★★☆ <span className="rating-value">4.5/5</span>
                                         </div>
@@ -329,7 +331,7 @@ function Welcome() {
                                                 alt="Scuderia Ferrari Puma Team Knitted Polo - Red"
                                                 className="product-image" />
                                         </Button>
-                                        <span className="product-name"><b> Scuderia Ferrari Puma Team Knitted Polo - Red </b></span>
+                                        <span className="product-name">Scuderia Ferrari Puma Team Knitted Polo - Red</span>
                                         <div className="rating">
                                             ★★★★☆ <span className="rating-value">4.5/5</span>
                                         </div>
@@ -342,7 +344,7 @@ function Welcome() {
                                             <img src={NA4} alt="Scuderia Ferrari 2025 Team 1/2 Zip Sweat"
                                                 className="product-image" />
                                         </Button>
-                                        <span className="product-name"><b> Scuderia Ferrari 2025 Team 1/2 Zip Sweat </b></span>
+                                        <span className="product-name">Scuderia Ferrari 2025 Team 1/2 Zip Sweat </span>
                                         <div className="rating">
                                             ★★★★☆ <span className="rating-value">4.5/5</span>
                                         </div>
@@ -398,7 +400,7 @@ function Welcome() {
                                             <img src={TS1} alt="Scuderia Ferrari 2025 Team T-Shirt"
                                                 className="product-image" />
                                         </Button>
-                                        <span className="product-name"><b> Scuderia Ferrari 2025 Team T-Shirt </b></span>
+                                        <span className="product-name"> Scuderia Ferrari 2025 Team T-Shirt </span>
                                         <div className="rating">
                                             ★★★★★ <span className="rating-value">5/5</span>
                                         </div>
@@ -414,7 +416,7 @@ function Welcome() {
                                                 alt="Scuderia Ferrari 2025 Team Charles Leclerc Cap - Red"
                                                 className="product-image" />
                                         </Button>
-                                        <span className="product-name"><b> Scuderia Ferrari 2025 Team Charles Leclerc Cap - Red </b></span>
+                                        <span className="product-name">Scuderia Ferrari 2025 Team Charles Leclerc Cap - Red</span>
                                         <div className="rating">
                                             ★★★★☆ <span className="rating-value">4/5</span>
                                         </div>
@@ -429,7 +431,7 @@ function Welcome() {
                                                 alt="Scuderia Ferrari Puma Large Shield Hooded Sweat - Red"
                                                 className="product-image" />
                                         </Button>
-                                        <span className="product-name"><b> Scuderia Ferrari Puma Large Shield Hooded Sweat - Red </b></span>
+                                        <span className="product-name">Scuderia Ferrari Puma Large Shield Hooded Sweat - Red</span>
                                         <div className="rating">
                                             ★★★☆☆ <span className="rating-value">3/5</span>
                                         </div>
@@ -443,7 +445,7 @@ function Welcome() {
                                             <img src={TS4} alt="Scuderia Ferrari Race Lifestyle Colour Block T-Shirt by Puma"
                                                 className="product-image" />
                                         </Button>
-                                        <span className="product-name"><b> Scuderia Ferrari Race Lifestyle Colour Block T-Shirt by Puma </b></span>
+                                        <span className="product-name"> Scuderia Ferrari Race Lifestyle Colour Block T-Shirt by Puma </span>
                                         <div className="rating">
                                             ★★★★☆ <span className="rating-value">4.5/5</span>
                                         </div>
@@ -494,7 +496,7 @@ function Welcome() {
                 <Container>
                     <Row xs={1} md={2} className="g-4">
                         <Col md={4}>
-                            <Link to="/men" style={{ textDecoration: "none"}}>
+                            <Link to="/content" style={{ textDecoration: "none"}}>
                                 <Card 
                                     style={{
                                         height: "280px",
@@ -615,89 +617,161 @@ function Welcome() {
                     </Row>
             </Container>
         </section>
-    
 
-                <CustomerReviews />
+        <CustomerReviews />
+        </Container>
 
-            </Container>
-            <footer className="footer">
+        <footer className="footer">
                 <Container fluid className="p-0">
+                    <Row className="newsletter-banner align-items-center justify-content-center text-center">
+                    <Col xs={12} md={8} lg={6}>
+                        <h2 className="mb-3">
+                        STAY UP TO DATE ABOUT<br />
+                        OUR LATEST OFFERS
+                        </h2>
+                        <form
+                        className="d-flex justify-content-center gap-2 flex-wrap"
+                        onSubmit={e => e.preventDefault()}
+                        >
+                        <input
+                            type="email"
+                            className="newsletter-input"
+                            placeholder="Enter your email address"
+                            required
+                        />
+                        <button type="submit" className="newsletter-btn">
+                            Subscribe to Newsletter
+                        </button>
+                        </form>
+                    </Col>
+                    </Row>
+
                     <div className="footer-content">
-                        <Row className="gx-2 gy-2 align-items-start">
-                            <Col md={4} lg={3} className="footer-col">
-                                <h5 style={{ color: '#C00000', fontWeight: 'bold' }}><b>SWIFT.CO</b></h5>
-                                <p className="text-muted">
-                                    We bring you premium Ferrari merchandise that matches your passion for speed, power, and style.
-                                </p>
-                                <div className="social-icons">
-                                    <Button variant="outline-light" title="Twitter" style={{ backgroundColor: 'white' }}>
-                                        <img src={twitterIcon} alt="Twitter" height="30" />
-                                    </Button>
-                                    <Button variant="outline-light" title="Facebook" style={{ backgroundColor: 'white' }}>
-                                        <img src={facebookIcon} alt="Facebook" height="30" />
-                                    </Button>
-                                    <Button variant="outline-light" title="Instagram" style={{ backgroundColor: 'white' }}>
-                                        <img src={instagramIcon} alt="Instagram" height="30" />
-                                    </Button>
-                                    <Button variant="outline-light" title="Github" style={{ backgroundColor: 'white' }}>
-                                        <img src={githubIcon} alt="Github" height="30" />
-                                    </Button>
-                                </div>
-                            </Col>
+                    <Row className="gx-2 gy-2 align-items-start">
+                        <Col md={4} lg={3} className="footer-col">
+                        <h5 style={{ color: '#C00000', fontWeight: 'bold' }}><b>SWIFT.CO</b></h5>
+                        <p className="text-muted">
+                            We bring you premium Ferrari merchandise that matches your
+                            passion for speed, power, and style.
+                        </p>
+                        <div className="social-icons">
+                            <Button variant="outline-light" title="Twitter" style={{ backgroundColor: 'white' }}>
+                                <img src={twitterIcon} alt="Twitter" height="30" />
+                            </Button>
+                            <Button variant="outline-light" title="Facebook" style={{ backgroundColor: 'white' }}>
+                                <img src={facebookIcon} alt="Facebook" height="30" />
+                            </Button>
+                            <Button variant="outline-light" title="Instagram" style={{ backgroundColor: 'white' }}>
+                                <img src={instagramIcon} alt="Instagram" height="30" />
+                            </Button>
+                            <Button variant="outline-light" title="Github" style={{ backgroundColor: 'white' }}>
+                                <img src={githubIcon} alt="Github" height="30" />
+                            </Button>
+                        </div>
+                        </Col>
 
-                            <Col md={3} lg={2} className="footer-col offset-md-1 offset-lg-3 text-end">
-                                <h6>Help</h6>
-                                <ul className="list-unstyled">
-                                    <li><Link to="#" className="text-decoration-none text-muted">Delivery Details</Link></li>
-                                    <li><Link to="#" className="text-decoration-none text-muted">Terms & Conditions</Link></li>
-                                    <li><Link to="#" className="text-decoration-none text-muted">Privacy Policy</Link></li>
-                                </ul>
-                            </Col>
+                        <Col md={3} lg={2} className="footer-col offset-md-1 offset-lg-3 text-end">
+                        <h6>Help</h6>
+                        <ul className="list-unstyled">
+                            <li>
+                            <Link to="#" className="text-decoration-none text-muted">
+                                Delivery Details
+                            </Link>
+                            </li>
+                            <li>
+                            <Link to="#" className="text-decoration-none text-muted">
+                                Terms & Conditions
+                            </Link>
+                            </li>
+                            <li>
+                            <Link to="#" className="text-decoration-none text-muted">
+                                Privacy Policy
+                            </Link>
+                            </li>
+                        </ul>
+                        </Col>
 
-                            <Col md={3} lg={2} className="footer-col offset-lg-2 text-end">
-                                <h6>FAQ</h6>
-                                <ul className="list-unstyled">
-                                    <li><Link to="#" className="text-decoration-none text-muted">Account</Link></li>
-                                    <li><Link to="#" className="text-decoration-none text-muted">Manage Deliveries</Link></li>
-                                    <li><Link to="#" className="text-decoration-none text-muted">Orders</Link></li>
-                                    <li><Link to="#" className="text-decoration-none text-muted">Payments</Link></li>
-                                </ul>
-                            </Col>
-                        </Row>
+                        <Col md={3} lg={2} className="footer-col offset-lg-2 text-end">
+                        <h6>FAQ</h6>
+                        <ul className="list-unstyled">
+                            <li>
+                            <Link to="#" className="text-decoration-none text-muted">
+                                Account
+                            </Link>
+                            </li>
+                            <li>
+                            <Link to="#" className="text-decoration-none text-muted">
+                                Manage Deliveries
+                            </Link>
+                            </li>
+                            <li>
+                            <Link to="#" className="text-decoration-none text-muted">
+                                Orders
+                            </Link>
+                            </li>
+                            <li>
+                            <Link to="#" className="text-decoration-none text-muted">
+                                Payments
+                            </Link>
+                            </li>
+                        </ul>
+                        </Col>
+                    </Row>
 
-                        <hr className="footer-divider mt-4" />
+                    <hr className="footer-divider mt-4" />
 
-                        <Row className="align-items-center justify-content-between">
-                            <Col md="auto" className="footer-copyright">
-                                <div className="text-muted">
-                                    Swift.co © 2023-2025, All Rights Reserved
-                                </div>
-                            </Col>
-                            <Col md="auto" className="d-flex">
-                                <div className="payment-buttons d-flex gap-1">
-                                    <Button variant="outline-light" title="Pay with Visa" style={{ backgroundColor: 'white' }}>
-                                        <img src={visaIcon} alt="Visa" height="15" />
-                                    </Button>
-                                    <Button variant="outline-light" title="Pay with Mastercard" style={{ backgroundColor: 'white' }}>
-                                        <img src={mastercardIcon} alt="Mastercard" height="15" />
-                                    </Button>
-                                    <Button variant="outline-light" title="Pay with PayPal" style={{ backgroundColor: 'white' }}>
-                                        <img src={paypalIcon} alt="PayPal" height="15" />
-                                    </Button>
-                                    <Button variant="outline-light" title="Pay with Apple Pay" style={{ backgroundColor: 'white' }}>
-                                        <img src={applepayIcon} alt="Apple Pay" height="15" />
-                                    </Button>
-                                    <Button variant="outline-light" title="Pay with Google Pay" style={{ backgroundColor: 'white' }}>
-                                        <img src={gpayIcon} alt="Google Pay" height="15" />
-                                    </Button>
-                                </div>
-                            </Col>
-                        </Row>
+                    <Row className="align-items-center justify-content-between">
+                        <Col md="auto" className="footer-copyright">
+                        <div className="text-muted">
+                            Swift.co © 2023-2025, All Rights Reserved
+                        </div>
+                        </Col>
+                        <Col md="auto" className="d-flex">
+                        <div className="payment-buttons d-flex gap-1">
+                            <Button
+                            variant="outline-light"
+                            title="Pay with Visa"
+                            style={{ backgroundColor: 'white' }}
+                            >
+                            <img src={visaIcon} alt="Visa" height="15" />
+                            </Button>
+                            <Button
+                            variant="outline-light"
+                            title="Pay with Mastercard"
+                            style={{ backgroundColor: 'white' }}
+                            >
+                            <img src={mastercardIcon} alt="Mastercard" height="15" />
+                            </Button>
+                            <Button
+                            variant="outline-light"
+                            title="Pay with PayPal"
+                            style={{ backgroundColor: 'white' }}
+                            >
+                            <img src={paypalIcon} alt="PayPal" height="15" />
+                            </Button>
+                            <Button
+                            variant="outline-light"
+                            title="Pay with Apple Pay"
+                            style={{ backgroundColor: 'white' }}
+                            >
+                            <img src={applepayIcon} alt="Apple Pay" height="15" />
+                            </Button>
+                            <Button
+                            variant="outline-light"
+                            title="Pay with Google Pay"
+                            style={{ backgroundColor: 'white' }}
+                            >
+                            <img src={gpayIcon} alt="Google Pay" height="15" />
+                            </Button>
+                         </div>
+                        </Col>
+                     </Row>
                     </div>
                 </Container>
             </footer>
-        </div>
+    </div>
     );
 }
+
 
 export default Welcome;
