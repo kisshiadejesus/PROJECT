@@ -373,7 +373,7 @@ function Welcome() {
             <hr className="divider mt-4" />
 
             <div className="title-container">
-    <h1 className='title-text' style={{ fontWeight: 900, fontSie: '2.5rem' }}> TOP SELLING </h1>
+    <h1 className='title-text' style={{ fontWeight: 900, fontSize: '2.5rem' }}> TOP SELLING </h1>
 </div>
             <Container className="top-selling-container">
                 <div className="products">
