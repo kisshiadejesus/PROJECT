@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Navbar, Container, Nav, Button, Row, Col, Card, Pagination } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { useCart } from '../context/cartcontext'; 
 import searchIcon from '../assets/search-icon.png';
 import UserIcon from '../assets/UserIcon.png';
 import CartIcon from '../assets/Cart.png';
@@ -13,10 +14,11 @@ import mastercardIcon from '../assets/mastercard.png';
 import paypalIcon from '../assets/paypal.png';
 import applepayIcon from '../assets/applepay.png';
 import gpayIcon from '../assets/gpay.png';
+import CartIconImage from '../assets/Cart.png'; 
 
 import '../styles/welcome.css';
 import '../styles/content.css';
-//import image paths
+
 import shirt1 from '../assets/shirt-1.jpeg';
 import shirt2 from '../assets/shirt-2.jpeg';
 import shirt3 from '../assets/shirt-3.jpeg';
@@ -27,7 +29,6 @@ import shirt7 from '../assets/shirt-7.jpeg';
 import shirt8 from '../assets/shirt-8.jpeg';
 import shirt9 from '../assets/shirt-9.jpeg';
 
-// Import new shirt images
 import shirt10 from '../assets/shirt-10.jpeg';
 import shirt11 from '../assets/shirt-11.jpeg';
 import shirt12 from '../assets/shirt-12.jpeg';
@@ -37,6 +38,7 @@ import shirt15 from '../assets/shirt-15.jpeg';
 import shirt16 from '../assets/shirt-16.jpeg';
 import shirt17 from '../assets/shirt-17.jpeg';
 import shirt18 from '../assets/shirt-18.jpeg';
+
 
 const products = [
     {
@@ -149,7 +151,7 @@ const products = [
     },
 ];
 
-// Function to generate star icons
+
 const renderStars = (rating) => {
     const maxRating = 5;
     let fullStars = 0;
@@ -162,7 +164,7 @@ const renderStars = (rating) => {
             const num = parseFloat(rated);
             fullStars = Math.floor(num);
             halfStar = num - fullStars >= 0.5;
-            ratingText = `${fullStars + (halfStar ? 0.5 : 0)}`; // Corrected rating text
+            ratingText = `${fullStars + (halfStar ? 0.5 : 0)}`; 
         }
     } else {
         const num = parseFloat(rating);
@@ -183,10 +185,12 @@ const renderStars = (rating) => {
             stars.push(<span key={`empty-${i}`} style={{ color: '#ddd', fontSize: '1.2rem' }}>☆</span>); 
         }
     }
-    return { stars, ratingText }; // Return both stars and rating text
+    return { stars, ratingText };
 };
 
+
 function Content() {
+    const { addToCart } = useCart();
     const [showNewArrivalsBanner, setShowNewArrivalsBanner] = useState(true);
     const [searchQuery, setSearchQuery] = useState('');
     const [sortBy, setSortBy] = useState('Most Popular'); 
@@ -235,14 +239,11 @@ function Content() {
         setSortedProducts(sorted);
       }, [sortBy, searchQuery]);
 
-    // Calculate the indices of the products to display on the current page
-    const indexOfLastProduct = currentPage * productsPerPage;
+      const indexOfLastProduct = currentPage * productsPerPage;
     const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
     const currentProducts = sortedProducts.slice(indexOfFirstProduct, indexOfLastProduct);
 
-    // Change page
     const paginate = (pageNumber) => setCurrentPage(pageNumber);
-
 
     const StyledPagination = () => {
         let items = [];
@@ -398,51 +399,40 @@ function Content() {
                 </Container>
             </Navbar>
 
-            {/* Main Content (Shopping Section) */}
             <Container className="my-4">
-                {/* Breadcrumb */}
-                <div style={{ marginBottom: '0.5rem', fontSize: '0.8rem', color: '#6c757d' }}>
-                    Home &gt; <span style={{color: '#000000'}}>Casual</span>
-                </div>
                 <div style={{  marginTop: '2rem' }}>
                   <div style={{ marginBottom: '0.5rem', fontSize: '0.8rem', color: '#6c757d' }}>
                       Home &gt; <span style={{color: '#000000'}}>Casual</span>
                   </div>
                   <h2 className="mb-2" style={{  float: 'left' }}>Men</h2>
                 </div>
-                {/* Added text with reduced spacing and flexbox */}
                 <div style={{ display: 'flex', justifyContent: 'flex-end',  marginBottom: '1.5rem', fontSize: '0.9rem', color: '#666' }}>
-    <div style={{ display: 'flex', gap: '10px', alignItems: 'baseline', marginTop: '1rem' }}>
-        <div>
-            {sortedProducts.length > 0 ? (
-                <span>
-                    Showing {indexOfFirstProduct + 1} - {Math.min(indexOfLastProduct, sortedProducts.length)} of {sortedProducts.length} Products
-                </span>
-            ) : (
-                <span>
-                    Showing 0 - 0 of 0 Products
-                </span>
-            )}
-        </div>
-        <div>
-            Sort by:
-            <select
-                style={{ marginLeft: '0.5rem', padding: '0.25rem', borderRadius: '4px', borderColor: '#ccc' }}
-                value={sortBy}
-                onChange={handleSortChange}
-            >
-                <option>Most Popular</option>
-                <option>Price: Low to High</option>
-                <option>Price: High to Low</option>
-            </select>
-        </div>
-    </div>
-</div>
+                    <div style={{ display: 'flex', gap: '10px', alignItems: 'baseline', marginTop: '1rem' }}>
+                        <div>
+                            {sortedProducts.length > 0 ? (
+                                <span> Showing {indexOfFirstProduct + 1} - {Math.min(indexOfLastProduct, sortedProducts.length)} of {sortedProducts.length} Products</span>
+                            ) : (
+                            <span> Showing 0 - 0 of 0 Products</span>
+                            )}
+                            </div>
+                            <div>
+                                Sort by:
+                                <select
+                                style={{ marginLeft: '0.5rem', padding: '0.25rem', borderRadius: '4px', borderColor: '#ccc' }}
+                                value={sortBy}
+                                onChange={handleSortChange}
+                                >
+                                    <option>Most Popular</option>
+                                    <option>Price: Low to High</option>
+                                    <option>Price: High to Low</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
                 <div style={{ clear: 'both' }}></div>
                 <Row xs={1} sm={2} md={3} lg={3} className="g-3 justify-content-center">
                     {currentProducts.map((product, index) => (
                         <Col key={index} className="d-flex align-items-stretch justify-content-center"  >
-                            <Link to="/product" style={{ textDecoration: 'none' }}>
                                 <Card className="h-100 border-0" style={{ maxWidth: '330px' }}>
                                      <div
                                         style={{
@@ -477,10 +467,33 @@ function Content() {
                                             <span style={{ color: '#6c757d' }}>{'/5'}</span>
                                           </Card.Text>
                                           <Card.Text><strong style={{ fontWeight: 'bold', marginTop: '0.2rem', fontSize: '1.1rem' }}>${product.price.toFixed(2)}</strong></Card.Text>
+                                          <Button variant="light" className="mt-2 align-self-start" title="Add to Cart"
+                                          onClick={() =>
+                                            addToCart({
+                                                id: product.name + index,
+                                                name: product.name,
+                                                price: product.price,
+                                                image: product.image,
+                                                qty: 1,
+                                            })
+                                            }
+                                            style={{
+                                                border: '1px solid #ccc',
+                                                backgroundColor: 'white',
+                                                padding: '6px 10px',
+                                                display: 'flex',
+                                                alignItems: 'center',
+                                                justifyContent: 'center',
+                                                borderRadius: '4px',
+                                                width: '40px',
+                                                height: '40px',
+                                            }}
+                                            >
+                                                <img src={CartIconImage} alt="Add to Cart" style={{ width: '20px', height: '20px' }} />
+                                        </Button>
                                         </div>
                                     </Card.Body>
                                 </Card>
-                            </Link>
                         </Col>
                     ))}
                      {sortedProducts.length === 0 && (
@@ -490,7 +503,6 @@ function Content() {
                     )}
                 </Row>
                 <hr className="mt-4" />
-                {/* Pagination (Optional) */}
                 <div className="d-flex justify-content-center mt-4 pb-5">
                     <StyledPagination />
                 </div>
