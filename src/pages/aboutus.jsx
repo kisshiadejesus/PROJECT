@@ -1,3 +1,5 @@
+//aboutus.jsx
+
 import React, { useState } from 'react';
 import { Navbar, Container, Nav, Button, Row, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
@@ -73,7 +75,8 @@ function AboutUs() {
             </Navbar>
 
             <div className="main-content-container" style={{
-                paddingTop: showNewArrivalsBanner ? '130px' : '90px',
+                paddingTop: showNewArrivalsBanner ? '150px' : '90px',
+                marginTop:'40px',
                 backgroundImage: `url(${aboutUsImage})`,
                 backgroundSize: 'cover',
                 backgroundRepeat: 'no-repeat',
@@ -99,7 +102,7 @@ function AboutUs() {
                             src={foundersGif}
                             alt="About Us Founders"
                             className="img-fluid"
-                            style={{  marginLeft: '200px', maxWidth: '100%', height: 'auto', maxHeight: '400px' }}
+                            style={{  marginTop: '30px', marginLeft: '200px', maxWidth: '100%', height: 'auto', maxHeight: '400px' }}
                         />
                     </Col>
                     <Col md={12} lg={6}>
@@ -214,7 +217,7 @@ function AboutUs() {
     </p>
   </div>
 
-  <div className="contact-form">
+  <div className="contact-form" style={{ marginRight: '12rem'}}>
     <form>
       <div className="row mb-3">
         <div className="col-md-6">

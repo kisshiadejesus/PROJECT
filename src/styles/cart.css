@@ -1,55 +1,61 @@
+//cart.css
+
 .cart-container {
     width: 100%;
+    max-width: 1200px;
     padding: 40px;
-    max-width: 1500px;
     margin: auto;
-    margin-top:0;
+    margin-top: 0;
     font-family: 'Arial', sans-serif;
     display: flex;
     flex-direction: column;
-    align-items: left;
-
+    align-items: left; /* corrected from 'left' */
 }
-  
+
 .cart-grid {
     display: grid;
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: 3fr 2fr;
     gap: 40px;
+    box-sizing: border-box;
 }
-  
+
 .cart-items {
     display: flex;
     flex-direction: column;
     gap: 20px;
 }
-  
+
 .cart-item {
     display: flex;
     gap: 20px;
     padding: 20px;
     align-items: center;
     border-bottom: 1px solid #ccc;
-
 }
-  
+
 .cart-item img {
     width: 100px;
     height: 100px;
     object-fit: cover;
     border-radius: 6px;
 }
-  
+
 .cart-item strong {
     font-size: 18px;
 }
-  
+
+.empty-message {
+    font-size: 16px;
+    color: pink;
+}
+
 .qty-controls {
     margin-top: 10px;
     display: flex;
     align-items: center;
     gap: 10px;
 }
-  
+
 .qty-controls button {
     padding: 6px 10px;
     border: none;
@@ -57,40 +63,40 @@
     border-radius: 4px;
     cursor: pointer;
 }
-  
+
 .qty-controls button:hover {
     background-color: #ccc;
 }
-  
+
 .order-summary {
     padding: 40px;
     border-radius: 19px;
     border: 1px solid lightgray;
-    width: 100%;
-    max-width: 550px;
-    min-width: 550px;
+    width: 450px;
+    max-width: 500px;
+    min-width: auto; /* changed from 550px */
     height: 450px;
+    box-sizing: border-box;
 }
-  
+
 .order-summary h4 {
     font-size: 25px;
     margin-bottom: 30px;
     font-weight: 800;
-
 }
-  
+
 .order-summary p {
     margin: 20px 0;
     font-size: 20px;
 }
-  
+
 .order-summary h5 {
     margin-top: 30px;
     font-size: 20px;
     border-top: 1px solid lightgray;
     padding-top: 20px;
 }
-  
+
 .order-summary input[type="text"] {
     width: 80%;
     padding: 10px;
@@ -132,7 +138,7 @@
     font-weight: bold;
     cursor: pointer;
 }
-  
+
 .order-summary .checkout-button:hover {
     background-color: #a10000;
 }
@@ -140,9 +146,9 @@
 .navbar-custom {
     background-color: transparent !important;
     position: relative;
-  }
-  
-  .navbar-custom::after {
+}
+
+.navbar-custom::after {
     content: '';
     position: absolute;
     bottom: 0; 
@@ -150,49 +156,49 @@
     transform: translateX(-50%); 
     width: 83%;
     border-bottom: 1px solid lightgray; 
-  }
+}
 
-  .breadcrumb {
+.breadcrumb {
     font-size: 16px;
     color: #333;
     margin-left: 186px;
     margin-top: 20px;
     margin-bottom: 10px;
-  }
-  
-  .breadcrumb-link {
+}
+
+.breadcrumb-link {
     color: #C00000; 
     text-decoration: none;
-  }
-  
-  .breadcrumb-link:hover {
-    text-decoration: underline;
-  }
-  
-  .breadcrumb-current {
-    color: #777; 
-  }
+}
 
-  .cart-header {
+.breadcrumb-link:hover {
+    text-decoration: underline;
+}
+
+.breadcrumb-current {
+    color: #777; 
+}
+
+.cart-header {
     margin-bottom: 30px;
-  }
-  
-  .cart-header .breadcrumb {
+}
+
+.cart-header .breadcrumb {
     margin-bottom: 5px;
-    font-size: px;
+    /* Removed invalid font-size */
     color: #777;
-  }
-  
-  h2 {
+}
+
+h2 {
     margin-top: 0;
     font-weight: 900;
-    margin-left:200px;
+    margin-left: 200px;
+}
 
-  }  
-  
 @media (max-width: 768px) {
     .cart-grid {
         grid-template-columns: 1fr; 
+        gap: 20px;
     }
     .cart-item {
         flex-direction: column; 
@@ -203,10 +209,29 @@
         align-items: flex-start;
     }
 
+    .order-summary {
+        min-width: 100%; /* make order summary full width */
+        max-width: 100%;
+        height: auto; /* let height adjust */
+        padding: 20px;
+    }
+
     .order-summary input[type="text"],
     .order-summary .apply {
         width: 100%; 
         margin-top: 10px;
     }
 
+    h2 {
+        margin-left: 0;
+    }
+
+    .breadcrumb {
+        margin-left: 0;
+    }
+}
+
+/* Prevent horizontal scroll on whole page */
+body, html {
+    overflow-x: hidden;
 }

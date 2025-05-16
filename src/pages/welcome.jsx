@@ -1,3 +1,5 @@
+//welcome.jsx
+
 import React, { useRef } from 'react';
  import { useNavigate, Link } from 'react-router-dom';
  import '../styles/welcome.css';
@@ -19,7 +21,6 @@ import React, { useRef } from 'react';
  import TS3 from '../assets/TS3.jpg';
  import TS4 from '../assets/TS4.jpg';
  import { Col, Row, Card } from "react-bootstrap";
- //import statements for the images
  import twitterIcon from '../assets/twitter.png';
  import facebookIcon from '../assets/facebook.png';
  import instagramIcon from '../assets/instagram.png';

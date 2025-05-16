@@ -1,3 +1,5 @@
+//content.jsx
+
 import React, { useState, useEffect } from 'react';
 import { Navbar, Container, Nav, Button, Row, Col, Card, Pagination } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
@@ -13,10 +15,12 @@ import mastercardIcon from '../assets/mastercard.png';
 import paypalIcon from '../assets/paypal.png';
 import applepayIcon from '../assets/applepay.png';
 import gpayIcon from '../assets/gpay.png';
+import CartIconImage from '../assets/Cart.png'; 
+import { useCart } from '../context/cartcontext';
 
 import '../styles/welcome.css';
 import '../styles/content.css';
-//import image paths
+
 import shirt1 from '../assets/shirt-1.jpeg';
 import shirt2 from '../assets/shirt-2.jpeg';
 import shirt3 from '../assets/shirt-3.jpeg';
@@ -27,7 +31,6 @@ import shirt7 from '../assets/shirt-7.jpeg';
 import shirt8 from '../assets/shirt-8.jpeg';
 import shirt9 from '../assets/shirt-9.jpeg';
 
-// Import new shirt images
 import shirt10 from '../assets/shirt-10.jpeg';
 import shirt11 from '../assets/shirt-11.jpeg';
 import shirt12 from '../assets/shirt-12.jpeg';
@@ -149,7 +152,6 @@ const products = [
     },
 ];
 
-// Function to generate star icons
 const renderStars = (rating) => {
     const maxRating = 5;
     let fullStars = 0;
@@ -183,14 +185,17 @@ const renderStars = (rating) => {
             stars.push(<span key={`empty-${i}`} style={{ color: '#ddd', fontSize: '1.2rem' }}>☆</span>); 
         }
     }
-    return { stars, ratingText }; // Return both stars and rating text
+    return { stars, ratingText }; 
 };
 
 function Content() {
+    const { addToCart, cartItems } = useCart();
+    console.log(cartItems);
     const [showNewArrivalsBanner, setShowNewArrivalsBanner] = useState(true);
     const [searchQuery, setSearchQuery] = useState('');
     const [sortBy, setSortBy] = useState('Most Popular'); 
     const [sortedProducts, setSortedProducts] = useState(products); 
+    const totalQty = cartItems.reduce((sum, item) => sum + item.qty, 0); 
 
     const productsPerPage = 9; 
     const [currentPage, setCurrentPage] = useState(1); 
@@ -207,7 +212,7 @@ function Content() {
         setSortBy(event.target.value);
     };
 
-      // Function to sort products
+    // Function to sort products
     const sortProducts = (productsToSort, sortType) => {
         let sorted = [...productsToSort]; 
 
@@ -235,14 +240,13 @@ function Content() {
         setSortedProducts(sorted);
       }, [sortBy, searchQuery]);
 
-    // Calculate the indices of the products to display on the current page
     const indexOfLastProduct = currentPage * productsPerPage;
     const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
     const currentProducts = sortedProducts.slice(indexOfFirstProduct, indexOfLastProduct);
 
-    // Change page
     const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
+    const [isHovered, setIsHovered] = useState(false);
 
     const StyledPagination = () => {
         let items = [];
@@ -388,8 +392,25 @@ function Content() {
                     </div>
 
                     <Nav className="icon-wrapper">
-                        <Nav.Link as={Link} to="/cart">
+                        <Nav.Link as={Link} to="/cart" style ={{ position: 'relative'}}>
                             <img src={CartIcon} alt="Cart" className="cart-icon" />
+                            {totalQty > 0 && (
+                                <span
+                                style={{
+                                    position: 'absolute',
+                                    top: '0px',
+                                    right: '0px',
+                                    backgroundColor: '#C00000',
+                                    color: 'white',
+                                    borderRadius: '50%',
+                                    padding: '2px 6px',
+                                    fontSize: '0.7rem',
+                                    fontWeight: 'bold',
+                                }}
+                                >
+                                {totalQty}
+                                </span>
+                            )}
                         </Nav.Link>
                         <Nav.Link as={Link} to="/profile">
                             <img src={UserIcon} alt="User" className="user-icon" />
@@ -401,14 +422,11 @@ function Content() {
             {/* Main Content (Shopping Section) */}
             <Container className="my-4">
                 {/* Breadcrumb */}
-                <div style={{ marginBottom: '0.5rem', fontSize: '0.8rem', color: '#6c757d' }}>
-                    Home &gt; <span style={{color: '#000000'}}>Casual</span>
-                </div>
-                <div style={{  marginTop: '2rem' }}>
-                  <div style={{ marginBottom: '0.5rem', fontSize: '0.8rem', color: '#6c757d' }}>
+                <div style={{  marginTop: '3rem' }}>
+                  <div style={{ marginBottom: '1rem', fontSize: '0.8rem', color: '#6c757d', marginLeft: '90px', marginTop: '80px', fontSize: '15px' }}>
                       Home &gt; <span style={{color: '#000000'}}>Casual</span>
                   </div>
-                  <h2 className="mb-2" style={{  float: 'left' }}>Men</h2>
+                  <h2 className="mb-2" style={{  float: 'left', marginLeft: '90px', marginTop:'20px' }}>Men</h2>
                 </div>
                 {/* Added text with reduced spacing and flexbox */}
                 <div style={{ display: 'flex', justifyContent: 'flex-end',  marginBottom: '1.5rem', fontSize: '0.9rem', color: '#666' }}>
@@ -439,10 +457,10 @@ function Content() {
     </div>
 </div>
                 <div style={{ clear: 'both' }}></div>
+                <div style={{ display: 'flex', marginTop:'40px', marginLeft:'30px', justifyContent: 'center', width: '100%' }}>
                 <Row xs={1} sm={2} md={3} lg={3} className="g-3 justify-content-center">
                     {currentProducts.map((product, index) => (
                         <Col key={index} className="d-flex align-items-stretch justify-content-center"  >
-                            <Link to="/product" style={{ textDecoration: 'none' }}>
                                 <Card className="h-100 border-0" style={{ maxWidth: '330px' }}>
                                      <div
                                         style={{
@@ -477,10 +495,22 @@ function Content() {
                                             <span style={{ color: '#6c757d' }}>{'/5'}</span>
                                           </Card.Text>
                                           <Card.Text><strong style={{ fontWeight: 'bold', marginTop: '0.2rem', fontSize: '1.1rem' }}>${product.price.toFixed(2)}</strong></Card.Text>
+                                          <Button variant="light" className="add-to-cart-btn mt-2 align-self-start" title="Add to Cart"
+                                          onClick={() =>
+                                            addToCart({
+                                                id: product.name + index,
+                                                name: product.name,
+                                                price: product.price,
+                                                image: product.image,
+                                                qty: 1,
+                                            })
+                                            }
+                                            >
+                                                <img src={CartIconImage} alt="Add to Cart" style={{ width: '20px', height: '20px' }} />
+                                        </Button>
                                         </div>
                                     </Card.Body>
                                 </Card>
-                            </Link>
                         </Col>
                     ))}
                      {sortedProducts.length === 0 && (
@@ -489,6 +519,8 @@ function Content() {
                         </Col>
                     )}
                 </Row>
+
+                </div>
                 <hr className="mt-4" />
                 {/* Pagination (Optional) */}
                 <div className="d-flex justify-content-center mt-4 pb-5">

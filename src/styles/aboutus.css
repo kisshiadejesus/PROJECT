@@ -1,3 +1,5 @@
+
+
 /* aboutus.css */
 
 /* Center both sections */
@@ -102,7 +104,11 @@
 .aboutus-contact {
   display: flex;
   flex-wrap: wrap;
-  gap: 2rem;
+  gap: 3rem;
+  margin-left: 350px;
+  margin-top: 80px;
+  margin-right: 100px;
+  margin-bottom: 150px;
 }
 .contact-info {
   flex: 1 1 300px;
@@ -114,6 +120,7 @@
 .contact-info p {
   line-height: 1.5;
   margin-bottom: 1rem;
+  
 }
 .contact-form button[type="submit"].btn-danger {
   background-color: #C00000;
@@ -131,6 +138,7 @@
 .contact-form textarea {
   border-radius: 0.25rem;
   border-color: #ccc;
+  
 }
 
 /* Responsive */
@@ -138,9 +146,11 @@
   .aboutus-team,
   .aboutus-contact {
     width: 95%;
+    
   }
   .aboutus-contact {
     flex-direction: column;
+
   }
   .contact-form {
     flex-basis: 100%; /* Make form full width on smaller screens */

@@ -1,3 +1,5 @@
+//checkout.jsx
+
 	import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Navbar, Nav, Container, Button, Row, Col } from 'react-bootstrap';

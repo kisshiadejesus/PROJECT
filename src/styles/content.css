@@ -1,8 +1,9 @@
+//content.css
 
 .product-card {
   max-width: 330px;
   background-color: #f0f0f0;
-  padding: 1rem;
+  padding: 0.5rem;
   border-radius: 0.5rem;
   display: flex;
   flex-direction: column;
@@ -144,3 +145,21 @@ font-size: 1rem;
   margin-top: 5px;
   font-size: 1.2em;
 }
+
+.add-to-cart-btn {
+  border: 1px solid #ccc;
+  background-color: white;
+  padding: 6px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  width: 40px;
+  height: 40px;
+  transition: background-color 0.2s;
+}
+
+.add-to-cart-btn:hover {
+  background-color: #f2f2f2;
+}
+

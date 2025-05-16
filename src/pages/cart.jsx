@@ -1,3 +1,5 @@
+//cart.jsx
+
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Navbar, Nav, Container, Button, Row, Col } from 'react-bootstrap';
@@ -21,7 +23,6 @@ function CartPage() {
   const [showNewArrivalsBanner, setShowNewArrivalsBanner] = useState(false);
   const navigate = useNavigate();
 
-  // Calculate the subtotal, delivery fee, and total
   const subtotal = cartItems.reduce((sum, item) => sum + item.price * item.qty, 0);
   const deliveryFee = cartItems.length > 0 ? 15 : 0;
   const total = subtotal + deliveryFee;
@@ -30,7 +31,7 @@ function CartPage() {
     if (cartItems.length === 0) {
       alert("Your cart is empty!");
     } else {
-      navigate('/checkout'); // Make sure /checkout route exists
+      navigate('/checkout'); 
     }
   };
 
@@ -99,7 +100,7 @@ function CartPage() {
                 </div>
               ))
             ) : (
-              <p>Your cart is empty. Start shopping now!</p>
+              <p classname="empty-message">Your cart is empty. Start shopping now!</p>
             )}
           </div>
 
