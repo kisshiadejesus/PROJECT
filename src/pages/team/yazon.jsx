@@ -14,21 +14,21 @@ import paypalIcon from '../../assets/paypal.png';
 import applepayIcon from '../../assets/applepay.png';
 import gpayIcon from '../../assets/gpay.png';
 import aboutMe from '../../assets/aboutme.jpeg';
-import patriciaImage from '../../assets/patricia.png';
+import tyroneImage from '../../assets/tyrone.png';
 
 // Define your skills data
 const skills = [
-    { label: 'Content Creation', value: 85 },
+    { label: 'Project Management', value: 90 },
     { label: 'Data Analysis', value: 90 },
-    { label: 'Social Media Marketing', value: 90 },
+    { label: 'Financial Management', value: 90 },
 ];
 
 // Define your stats data including experience
 const stats = [
-    { label: 'Year Of Experience', value: '10+' },
-    { label: 'Project Done', value: '50+' },
-    { label: 'Satisfied Client', value: '270+' },
-    { label: 'Certified Award', value: '30' },
+    { label: 'Year Of Experience', value: '7+' },
+    { label: 'Project Done', value: '20+' },
+    { label: 'Satisfied Client', value: '130+' },
+    { label: 'Certified Award', value: '10' },
 ];
 
 // Basic inline styles for the skill bars (you can move these to a CSS file)
@@ -71,7 +71,7 @@ const skillStyles = {
     },
 };
 
-function ArellanoPage() {
+function YazonPage() {
     const showNewArrivalsBanner = false;
 
     return (
@@ -122,7 +122,7 @@ function ArellanoPage() {
                 alignItems: 'center',
             }}>
                 <h1 className="section-title" style={{ fontWeight: 900, fontSize: '3em', marginBottom: '10px' }}>ABOUT ME</h1>
-                <p className="subtitle" style={{ fontSize: '1.05em', marginBottom: '20px' }}>About Us / Patricia Arellano</p>
+                <p className="subtitle" style={{ fontSize: '1.05em', marginBottom: '20px' }}>About Us / Tyrone Yazon</p>
             </div>
 
             <Container className="team-member-page">
@@ -146,8 +146,8 @@ function ArellanoPage() {
                             marginRight: 'auto',
                         }}>
                             <img
-                                src={patriciaImage}
-                                alt="Patricia Arellano"
+                                src={tyroneImage}
+                                alt="Tyrone Yazon"
                                 className="team-member-image"
                                 style={{
                                     maxWidth: '100%',
@@ -161,9 +161,8 @@ function ArellanoPage() {
                     <Col md={6}>
                         <div className="team-member-info">
                             <p className="about-me-title" style={{ textAlign: 'left', fontSize: '1.2rem', marginTop: '80px' }}>About Me</p>
-                            <h1 className='title-text' style={{ textAlign: 'left', fontWeight: 900, fontSize: '2rem', marginBottom: '30px' }}> PATRICIA RACQUEL ARELLANO </h1>
-                            <p style={{ textAlign: 'left' }}>A creative professional passionate about the intersection of content creation, data analysis and social media marketing under Swift.Co. I believe in using data-driven insights to create a high quality content to inform compelling content strategies that resonate with target audiences on social media. I’m dedicated to building strong online communities and achieving measurable results.</p>
-                           
+                            <h1 className='title-text' style={{ textAlign: 'left', fontWeight: 900, fontSize: '2rem', marginBottom: '30px' }}> TYRONE YAZON </h1>
+                            <p style={{ textAlign: 'left' }}>I am a detail-oriented professional who thrives on transforming challenges into growth opportunities. My background includes collaborating with diverse teams and stakeholders to drive innovation and efficiency. I believe in continuous learning and regularly seek opportunities to expand my skill set. Outside of work, I enjoy staying informed about the latest industry trends and technologies. Ultimately, I am committed to delivering impactful results while fostering a positive and collaborative work environment..</p>
                         </div>
                     </Col>
                 </Row>
@@ -174,7 +173,7 @@ function ArellanoPage() {
                     <Col md={6}>
                         <div style={{ marginTop: '20px', marginLeft: '90px' }}>  {/* Added marginLeft here */}
                             <h2 className='title-text' style={{ textAlign: 'left', fontWeight: 900, fontSize: '1.8rem', marginBottom: '15px' }}> SKILLS </h2>
-                            <p style={{ textAlign: 'left', marginBottom: '20px', textAlign: 'justify' }}>Proficient in crafting compelling content, analyzing data to inform strategic decisions, and executing effective social media marketing campaigns.</p>
+                            <p style={{ textAlign: 'left', marginBottom: '20px', textAlign: 'justify' }}>Experienced in handling financial operations, including budgeting, forecasting, and expense tracking.</p>
                             {/* Skills Section with Linear Progress Bars */}
                             <div style={{ marginRight: '20px' }}>
                                 {skills.map(({ label, value }) => (
@@ -361,4 +360,4 @@ function ArellanoPage() {
     );
 }
 
-export default ArellanoPage;
+export default YazonPage;
