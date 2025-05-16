@@ -73,8 +73,8 @@ function CartPage() {
       {/* Breadcrumb */}
       <div className="cart-header">
         <div className="breadcrumb">
-          <Link to="/" className="breadcrumb-link">Home</Link> &gt;
-          <span className="breadcrumb-current">Cart</span>
+          <Link to="/" className="breadcrumb-link">Home </Link> &gt;
+          <span className="breadcrumb-current"> Cart</span>
         </div>
         <h2>Your cart</h2>
       </div>

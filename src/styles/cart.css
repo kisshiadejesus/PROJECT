@@ -1,15 +1,16 @@
-//cart.css
+/* cart.css */
 
 .cart-container {
-    width: 100%;
+    width: 90%; /* Reduce width to create side spacing */
     max-width: 1200px;
     padding: 40px;
-    margin: auto;
-    margin-top: 0;
+    margin: 2rem auto; /* Add top/bottom margin and center horizontally */
     font-family: 'Arial', sans-serif;
     display: flex;
     flex-direction: column;
-    align-items: left; /* corrected from 'left' */
+    align-items: flex-start; /* Align items to the left */
+    border-radius: 10px; /* Add corner spacing with rounded borders */
+    background-color: #fff; /* Optional: ensure a solid background */
 }
 
 .cart-grid {
@@ -17,6 +18,9 @@
     grid-template-columns: 3fr 2fr;
     gap: 40px;
     box-sizing: border-box;
+    width: 100%; /* Ensure grid takes full width of the container */
+    /* Remove any border that might be present */
+    border: none;
 }
 
 .cart-items {
@@ -31,6 +35,8 @@
     padding: 20px;
     align-items: center;
     border-bottom: 1px solid #ccc;
+    border-radius: 8px; /* Add corner spacing to items */
+    background-color: #f9f9f9; /* Optional: light background for items */
 }
 
 .cart-item img {
@@ -71,12 +77,13 @@
 .order-summary {
     padding: 40px;
     border-radius: 19px;
-    border: 1px solid lightgray;
-    width: 450px;
-    max-width: 500px;
-    min-width: auto; /* changed from 550px */
-    height: 450px;
+    border: 1px solid lightgray; /* Keep the border for the order summary box */
+    width: 100%; /* Make order summary take full available width in its column */
+    max-width: 450px; /* Maintain a maximum width */
+    min-width: auto;
+    height: auto; /* Adjust height based on content */
     box-sizing: border-box;
+    background-color: #fff; /* Optional: solid background */
 }
 
 .order-summary h4 {
@@ -108,7 +115,7 @@
 }
 
 .order-summary .apply {
-    width: 18%; 
+    width: 18%;
     padding: 12px;
     margin-top: 10px;
     margin-left: 5px;
@@ -119,11 +126,11 @@
     color: white;
     font-weight: bold;
     cursor: pointer;
-    display: inline-block; 
+    display: inline-block;
 }
 
 .order-summary .apply:hover {
-    background-color: #a10000; 
+    background-color: #a10000;
 }
 
 .order-summary .checkout-button {
@@ -151,23 +158,27 @@
 .navbar-custom::after {
     content: '';
     position: absolute;
-    bottom: 0; 
-    left: 52%; 
-    transform: translateX(-50%); 
+    bottom: 0;
+    left: 52%;
+    transform: translateX(-50%);
     width: 83%;
-    border-bottom: 1px solid lightgray; 
+    border-bottom: 1px solid lightgray;
 }
 
 .breadcrumb {
     font-size: 16px;
     color: #333;
-    margin-left: 186px;
+    margin-left: auto; /* Remove fixed left margin */
+    margin-right: auto; /* Center the breadcrumb */
     margin-top: 20px;
     margin-bottom: 10px;
+    width: 90%; /* Match container width */
+    max-width: 1200px;
+    box-sizing: border-box;
 }
 
 .breadcrumb-link {
-    color: #C00000; 
+    color: #C00000;
     text-decoration: none;
 }
 
@@ -176,37 +187,55 @@
 }
 
 .breadcrumb-current {
-    color: #777; 
+    color: #777;
 }
 
 .cart-header {
     margin-bottom: 30px;
+    width: 90%; /* Match container width */
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
 }
 
 .cart-header .breadcrumb {
     margin-bottom: 5px;
-    /* Removed invalid font-size */
     color: #777;
 }
 
 h2 {
     margin-top: 0;
     font-weight: 900;
-    margin-left: 200px;
+    margin-left: auto; /* Remove fixed left margin */
+    margin-right: auto; /* Center the heading */
+    width: 90%; /* Match container width */
+    max-width: 1200px;
+    box-sizing: border-box;
+    text-align: left; /* Align heading to the left within its space */
 }
 
 @media (max-width: 768px) {
+    .cart-container {
+        width: 95%; /* Adjust for smaller screens */
+        padding: 20px;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        border-radius: 8px;
+    }
     .cart-grid {
-        grid-template-columns: 1fr; 
+        grid-template-columns: 1fr;
         gap: 20px;
     }
     .cart-item {
-        flex-direction: column; 
-        align-items: flex-start;
-    }
-    .qty-controls {
         flex-direction: column;
         align-items: flex-start;
+        padding: 15px;
+        border-radius: 6px;
+    }
+    .qty-controls {
+        flex-direction: row; /* Keep controls in a row on smaller screens */
+        align-items: center;
     }
 
     .order-summary {
@@ -214,20 +243,24 @@ h2 {
         max-width: 100%;
         height: auto; /* let height adjust */
         padding: 20px;
+        border-radius: 8px;
     }
 
     .order-summary input[type="text"],
     .order-summary .apply {
-        width: 100%; 
+        width: 100%;
         margin-top: 10px;
+        border-radius: 8px;
     }
 
     h2 {
         margin-left: 0;
+        text-align: left;
     }
 
     .breadcrumb {
         margin-left: 0;
+        width: 100%;
     }
 }
 
