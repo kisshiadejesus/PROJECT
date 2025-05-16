@@ -1,0 +1,148 @@
+/* aboutus.css */
+
+/* Center both sections */
+.aboutus-team,
+.aboutus-contact {
+  width: 90%; /* Slightly wider for the larger cards */
+  max-width: 1000px; /* Increased max width */
+  margin: 0 auto 3rem;
+}
+
+/* OUR TEAM */
+.team-header {
+  text-align: center;
+  padding-bottom: 2rem; /* Increased padding below header */
+}
+.team-header h2 {
+  font-size: 2.5rem; /* Slightly larger heading */
+  margin-bottom: 0.75rem;
+}
+.team-header p {
+  color: #666;
+  margin-bottom: 1.25rem;
+}
+.team-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem; /* Increased gap between buttons */
+}
+
+.team-buttons .btn-danger {
+  background-color: #C00000; /* Red */
+  color: white;
+  border: none;
+  padding: 1rem 2rem; /* Larger padding */
+  border-radius: 0.3rem;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.team-buttons .btn-danger:hover {
+   background-color: #990000; /* Darker red on hover */
+}
+
+.team-grid {
+  display: flex;
+  justify-content: center; /* Center the member cards horizontally */
+  align-items: flex-start; /* Align items to the top */
+  gap: 2rem; /* Increased gap between cards */
+}
+
+.member-card {
+  flex: 0 0 auto; /* Don't grow or shrink, auto width based on content */
+  width: auto; /* Adjust width based on image and text */
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s;
+  background-color: #f0f0f0; /* Light grey background */
+  border-radius: 0rem;
+  overflow: hidden;
+}
+.member-card:hover {
+  transform: translateY(-5px);
+}
+.member-card img {
+  width: 200px; /* Adjust image width as needed */
+  display: block;
+  object-fit: cover;
+  height: auto;
+  border-radius: 0.5rem 0.5rem 0 0;
+  padding-top: 1rem; /* Increased padding above image */
+  margin: 0 auto; /* Center the image within the card */
+}
+
+.member-info {
+  background: #C00000; /* Red background */
+  color: #fff;
+  padding: 1rem; /* Increased padding */
+  text-align: left; /* Align text to the left */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+}
+.member-info h6 {
+  margin: 0;
+  font-size: 1rem; /* Slightly larger name */
+  font-weight: 600;
+  white-space: normal;
+  overflow: visible;
+  text-overflow: clip;
+  color: #fff;
+  line-height: 1.2;
+}
+.member-info small {
+  font-size: 0.8rem; /* Slightly larger support text */
+  opacity: 0.9;
+  color: #fff;
+}
+
+/* CONTACT US */
+.aboutus-contact {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+.contact-info {
+  flex: 1 1 300px;
+}
+.contact-info h5 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+.contact-info p {
+  line-height: 1.5;
+  margin-bottom: 1rem;
+}
+.contact-form button[type="submit"].btn-danger {
+  background-color: #C00000;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  font-size: 1rem;
+  width: 100%;
+  transition: background-color 0.2s ease-in-out;
+}
+.contact-form .form-control,
+.contact-form .form-select,
+.contact-form textarea {
+  border-radius: 0.25rem;
+  border-color: #ccc;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .aboutus-team,
+  .aboutus-contact {
+    width: 95%;
+  }
+  .aboutus-contact {
+    flex-direction: column;
+  }
+  .contact-form {
+    flex-basis: 100%; /* Make form full width on smaller screens */
+  }
+}
