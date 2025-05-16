@@ -13,12 +13,19 @@ import mastercardIcon from '../assets/mastercard.png';
 import paypalIcon from '../assets/paypal.png';
 import applepayIcon from '../assets/applepay.png';
 import gpayIcon from '../assets/gpay.png';
-import aboutUsImage from '../assets/04.jpeg'; // Import the image
-import foundersGif from '../assets/06.gif'; // Import the GIF
+import aboutUsImage from '../assets/04.jpeg'; 
+import foundersGif from '../assets/06.gif'; 
 import aboutusfront from '../assets/aboutusfront.png';
+import tyroneImg from '../assets/tyrone.png';
+import cuyaImg from '../assets/cuya.png';
+import kisshiaImg from '../assets/kisshia.png';
+import theaImg from '../assets/thea.png';
+import patriciaImg from '../assets/patricia.png'
 
 import '../styles/welcome.css';
 import '../styles/content.css';
+import '../styles/aboutus.css';
+
 
 function AboutUs() {
     const [showNewArrivalsBanner, setShowNewArrivalsBanner] = useState(true);
@@ -26,6 +33,8 @@ function AboutUs() {
     const handleCloseNewArrivalsBanner = () => {
         setShowNewArrivalsBanner(false);
     };
+
+    
 
     return (
         <>
@@ -97,19 +106,19 @@ function AboutUs() {
                         <p className="mt-4 mt-lg-0" style={{ textAlign: 'justify', marginRight: '200px'}}>
                             In 2023, a group of college friends, Patricia Racquel Arellano, Thea Faith Cabrera, Althea Bianca Cuya, Jan Kisshia De Jesus, and Tyrone Yazon, founded Swift.co, a business focused on reselling official Ferrari merchandise. As passionate Ferrari F1 fans, they came together to share their love for the brand and its racing legacy.
                         </p>
-                        <p style={{ textAlign: 'justify', marginRight: '200px' }}>
+                        <p style={{ textAlign: 'justify', marginRight: '200px', marginBottom: '-50px'}}>
                             Swift.co offers a variety of high-quality Ferrari apparel and accessories. The group's goal is to connect fellow Ferrari enthusiasts with exclusive, authentic merchandise, reflecting their shared admiration for Ferrari's style, performance, and luxury.
                         </p>
                     </Col>
                 </Row>
-                <hr className="my-5 mx-auto" style={{ width: '75%' }} />
+                
             </Container>
-
-            <Container classname="unleash"> 
+<hr className="my-5 mx-auto" style={{ width: '90%' }} />
+            <Container className="unleash"> 
             <Row className="align-items-center justify-content-center">
-            <Col md={8} lg={6} classname="text-center">
-            <div classname="header">
-            <h1 className='title-text' style={{ textAlign:'center', fontWeight: 900, fontSize: '2.5rem' }}> UNLEASH THE LEGACY </h1>
+            <Col md={8} lg={6} className="text-center">
+            <div className="header">
+            <h1 className='title-text' style={{ textAlign:'center', fontWeight: 900, fontSize: '2.5rem', marginTop: '20px' }}> UNLEASH THE LEGACY </h1>
             <br></br>
             <p style={{ textAlign:'center', color:'grey'}}> 2025 Scuderia Ferrari Replica Collection </p>
             </div>
@@ -127,32 +136,114 @@ function AboutUs() {
                 height: '100vh',
                 overflow: 'hidden'
                 }}>
-             <Row
-                className="align-items-center justify-content-center"
-                style={{ margin: 0, padding: 0, width: '100%', height: '100%' }}>
-            <img
-                src={aboutusfront}
-                alt="front"
-                className="img-fluid"
-                style={{
+      
+            <div className="aboutusfront" style={{
+                paddingTop: showNewArrivalsBanner ? '130px' : '90px',
+                backgroundImage: `url(${aboutusfront})`,
+                backgroundSize: 'cover',
+                backgroundRepeat: 'no-repeat',
+                backgroundPosition: 'center',
+                color: 'white',
+                textAlign: 'center',
+                padding: '330px 0',
                 width: '100%',
-                height: '100%',
-                objectFit: 'cover',
-                display: 'block'
-                }}/>
-            </Row>
+                height: 'auto',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
+                alignItems: 'center',
+            }}></div>
+        
             </Container>
 
                 <Container>
-                <div style={{ marginTop: "80px" }}>
+                <div style={{ marginTop: "-70px" }}>
                 <Row className="align-items-center justify-content-center">
                     <p style={{ textAlign:'center', color:'grey'}}> The Ferrari Replica Collection celebrates Modena’s vibrant heritage, blending bold yellow accents with a modern take on Ferrari’s iconic red to embody speed, passion, and innovation. At Swift.co, we offer similar products that honor Ferrari’s legacy, combining stylish, high-quality apparel and accessories that connect fans to the brand’s rich history and cutting-edge spirit.</p>
                 </Row>
                 </div>
             </Container>
 
-            <hr className="my-5 mx-auto" style={{ width: '75%' }} />
+            <hr className="my-5 mx-auto" style={{ width: '90%' }} />
 
+
+{/* OUR TEAM */}
+<section className="aboutus-team">
+  <div className="team-header">
+    <h1 className='title-text' style={{ textAlign:'center', fontWeight: 900, fontSize: '2.5rem', marginTop: '20px' }}> OUR TEAM </h1>
+    <p>Meet our awesome members</p>
+    <div className="team-buttons">
+      <button className="btn btn-outline-secondary">📹 Book a call</button>
+      <button className="btn btn-danger">Get in touch</button>
+    </div>
+  </div>
+
+  <div className="team-grid">
+  {[
+    { img: tyroneImg, name: 'Tyrone Yazon', link: '/team/tyrone' },
+    { img: cuyaImg, name: 'Althea Cuya', link: '/team/althea' },
+    { img: kisshiaImg, name: 'Kisshia De Jesus', link: '/team/kisshia' },
+    { img: theaImg, name: 'Thea Cabrera', link: '/team/thea' },
+    { img: patriciaImg, name: 'Patricia Arellano', link: '/team/patricia' },
+  ].map(member => (
+    <div key={member.name} className="member-card">
+      <Nav.Link as={Link} to={member.link}>
+        <img src={member.img} alt={member.name} />
+      </Nav.Link>
+      <div className="member-info">
+        <h6>{member.name}</h6>
+        <small>Specialized Support</small>
+      </div>
+    </div>
+  ))}
+</div>
+  </section>
+
+{/* CONTACT US */}
+<section className="aboutus-contact">
+  <div className="contact-info">
+    <h5>Contact Us</h5>
+    <p>
+      <strong>Call us</strong><br />
+      Mon–Fri 8am–5pm<br />
+      📞 +1 (555) 000‑0000
+    </p>
+    <p>
+      <strong>Visit us</strong><br />
+      📍 España Blvd, Sampaloc, Manila
+    </p>
+  </div>
+
+  <div className="contact-form">
+    <form>
+      <div className="row mb-3">
+        <div className="col-md-6">
+          <input type="text" className="form-control" placeholder="First Name*" required />
+        </div>
+        <div className="col-md-6">
+          <input type="text" className="form-control" placeholder="Last Name*" required />
+        </div>
+      </div>
+      <input type="email" className="form-control mb-3" placeholder="you@company.com" />
+      <div className="row mb-3">
+        <div className="col-sm-4 col-md-3">
+          <select className="form-select">
+            <option>US</option>
+            <option>PH</option>
+            <option>UK</option>
+          </select>
+        </div>
+        <div className="col-sm-8 col-md-9">
+          <input type="tel" className="form-control" placeholder="+1 (555) 000‑0000" />
+        </div>
+      </div>
+      <textarea className="form-control mb-3" rows={4} placeholder="Leave us a message..." />
+      <button type="submit" className="btn btn-danger w-100">
+        Send message
+      </button>
+    </form>
+  </div>
+</section>
 
             <footer className="footer" style={{ marginTop: '4rem' }}>
                 <Container fluid className="p-0">

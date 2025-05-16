@@ -267,8 +267,4 @@ function CartPage() {
   );
 }
 
-<<<<<<< HEAD
 export default CartPage;
-=======
-export default CartPage;
->>>>>>> origin/main

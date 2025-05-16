@@ -1,16 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App.jsx'; 
-import { CartProvider } from './context/cartcontext';
-import { BrowserRouter } from 'react-router-dom'; // ✅ Correct package
+import App from './App.jsx'; // Import App.jsx
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <BrowserRouter> 
-      <CartProvider>
-        <App />
-      </CartProvider>
-    </BrowserRouter>
+    <App />  {/* Render App directly, no Router here */}
   </React.StrictMode>
 );
