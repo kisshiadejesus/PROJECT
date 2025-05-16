@@ -15,6 +15,7 @@ import applepayIcon from '../assets/applepay.png';
 import gpayIcon from '../assets/gpay.png';
 import aboutUsImage from '../assets/04.jpeg'; // Import the image
 import foundersGif from '../assets/06.gif'; // Import the GIF
+import aboutusfront from '../assets/aboutusfront.png';
 
 import '../styles/welcome.css';
 import '../styles/content.css';
@@ -101,6 +102,53 @@ function AboutUs() {
                         </p>
                     </Col>
                 </Row>
+                <hr className="my-5 mx-auto" style={{ width: '75%' }} />
+            </Container>
+
+            <Container classname="unleash"> 
+            <Row className="align-items-center justify-content-center">
+            <Col md={8} lg={6} classname="text-center">
+            <div classname="header">
+            <h1 className='title-text' style={{ textAlign:'center', fontWeight: 900, fontSize: '2.5rem' }}> UNLEASH THE LEGACY </h1>
+            <br></br>
+            <p style={{ textAlign:'center', color:'grey'}}> 2025 Scuderia Ferrari Replica Collection </p>
+            </div>
+            </Col>
+            </Row>
+            </Container>
+
+            <br></br>
+
+            <Container fluid
+                style={{
+                margin: 0,
+                padding: 0,
+                width: '100vw',
+                height: '100vh',
+                overflow: 'hidden'
+                }}>
+             <Row
+                className="align-items-center justify-content-center"
+                style={{ margin: 0, padding: 0, width: '100%', height: '100%' }}>
+            <img
+                src={aboutusfront}
+                alt="front"
+                className="img-fluid"
+                style={{
+                width: '100%',
+                height: '100%',
+                objectFit: 'cover',
+                display: 'block'
+                }}/>
+            </Row>
+            </Container>
+
+                <Container>
+                <div style={{ marginTop: "80px" }}>
+                <Row className="align-items-center justify-content-center">
+                    <p style={{ textAlign:'center', color:'grey'}}> The Ferrari Replica Collection celebrates Modena’s vibrant heritage, blending bold yellow accents with a modern take on Ferrari’s iconic red to embody speed, passion, and innovation. At Swift.co, we offer similar products that honor Ferrari’s legacy, combining stylish, high-quality apparel and accessories that connect fans to the brand’s rich history and cutting-edge spirit.</p>
+                </Row>
+                </div>
             </Container>
 
             <hr className="my-5 mx-auto" style={{ width: '75%' }} />

@@ -281,4 +281,8 @@ const CheckoutPage = () => {
   );
 };
 
+<<<<<<< HEAD
 export default CheckoutPage;
+=======
+export default CheckoutPage;
+>>>>>>> origin/main

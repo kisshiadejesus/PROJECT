@@ -54,4 +54,8 @@ export const CartProvider = ({ children }) => {
   );
 };
 
+<<<<<<< HEAD
 export const useCart = () => useContext(CartContext);
+=======
+export const useCart = () => useContext(CartContext);
+>>>>>>> origin/main
