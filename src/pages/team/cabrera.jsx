@@ -14,23 +14,23 @@ import paypalIcon from '../../assets/paypal.png';
 import applepayIcon from '../../assets/applepay.png';
 import gpayIcon from '../../assets/gpay.png';
 import aboutMe from '../../assets/aboutme.jpeg';
-import kisshiaImage from '../../assets/kisshia.png';
+import theaImage from '../../assets/thea.png';
 
 // Define your skills data
 const skills = [
-    { label: 'Content Creation', value: 80 },
-    { label: 'UI/UX Design', value: 90 },
-    { label: 'Design Systems & Branding', value: 87 },
-    { label: 'Social Media Strategy and Management', value: 92 },
-    { label: 'Prototyping and Wireframing', value: 85 },
+    { label: 'Strategic Planning', value: 90 },
+    { label: 'Content Strategy', value: 85 },
+    { label: 'Marketing', value: 90 },
+    { label: 'Brand Positioning', value: 85 },
+    { label: 'Management', value: 90 },
 ];
 
 // Define your stats data including experience
 const stats = [
-    { label: 'Year Of Experience', value: '10+' },
-    { label: 'Project Done', value: '60+' },
-    { label: 'Satisfied Client', value: '300+' },
-    { label: 'Certified Award', value: '30' },
+    { label: 'Year Of Experience', value: '5+' },
+    { label: 'Project Done', value: '15+' },
+    { label: 'Satisfied Client', value: '100+' },
+    { label: 'Certified Award', value: '10' },
 ];
 
 // Basic inline styles for the skill bars (you can move these to a CSS file)
@@ -73,7 +73,7 @@ const skillStyles = {
     },
 };
 
-function DeJesusPage() {
+function CabreraPage() {
     const showNewArrivalsBanner = false;
 
     return (
@@ -124,7 +124,7 @@ function DeJesusPage() {
                 alignItems: 'center',
             }}>
                 <h1 className="section-title" style={{ fontWeight: 900, fontSize: '3em', marginBottom: '10px' }}>ABOUT ME</h1>
-                <p className="subtitle" style={{ fontSize: '1.05em', marginBottom: '20px' }}>About Us / Kisshia De Jesus</p>
+                <p className="subtitle" style={{ fontSize: '1.05em', marginBottom: '20px' }}>About Us / Thea Faith Cabrera</p>
             </div>
 
             <Container className="team-member-page">
@@ -148,8 +148,8 @@ function DeJesusPage() {
                             marginRight: 'auto',
                         }}>
                             <img
-                                src={kisshiaImage}
-                                alt="Kisshia De Jesus"
+                                src={theaImage}
+                                alt="Thea Cabrera"
                                 className="team-member-image"
                                 style={{
                                     maxWidth: '100%',
@@ -163,9 +163,9 @@ function DeJesusPage() {
                     <Col md={6}>
                         <div className="team-member-info">
                             <p className="about-me-title" style={{ textAlign: 'left', fontSize: '1.2rem', marginTop: '80px' }}>About Me</p>
-                            <h1 className='title-text' style={{ textAlign: 'left', fontWeight: 900, fontSize: '2rem', marginBottom: '30px' }}> KISSHIA DEJESUS </h1>
-                            <p style={{ textAlign: 'left' }}>A dedicated professional specializing in web design, digital strategy, and brand growth. Skilled in creating visually engaging, user-friendly websites and developing effective social media strategies. Experienced in managing online platforms and creating content that enhances brand presence and drives audience engagement.</p>
-                            <p style={{ textAlign: 'left' }}>Focused on leveraging data-driven insights to improve digital experiences and streamline user interactions. Adept at optimizing design and content strategies to boost user engagement, increase brand visibility, and achieve business goals through impactful digital campaigns.</p>
+                            <h1 className='title-text' style={{ textAlign: 'left', fontWeight: 900, fontSize: '2rem', marginBottom: '30px' }}> THEA FAITH CABRERA </h1>
+                            <p style={{ textAlign: 'left' }}>A young entrepreneur and creative mind behind Swift.co, the official retailer of premium Ferrari merchandise in the Philippines. Since 2023, I’ve been passionate about building brands that blend style, identity, and impact. Whether it’s through fashion, content, or visual storytelling, I believe in making bold ideas come to life.</p>
+                            
                         </div>
                     </Col>
                 </Row>
@@ -176,7 +176,7 @@ function DeJesusPage() {
                     <Col md={6}>
                         <div style={{ marginTop: '20px', marginLeft: '90px' }}>  {/* Added marginLeft here */}
                             <h2 className='title-text' style={{ textAlign: 'left', fontWeight: 900, fontSize: '1.8rem', marginBottom: '15px' }}> SKILLS </h2>
-                            <p style={{ textAlign: 'left', marginBottom: '20px', textAlign: 'justify' }}>Highly skilled in UI/UX Design with a strong understanding of Design Systems and Branding, adept at Prototyping and Wireframing, and excellent in Social Media Strategy and Management.</p>
+ 
                             {/* Skills Section with Linear Progress Bars */}
                             <div style={{ marginRight: '20px' }}>
                                 {skills.map(({ label, value }) => (
@@ -363,4 +363,4 @@ function DeJesusPage() {
     );
 }
 
-export default DeJesusPage;
+export default CabreraPage;

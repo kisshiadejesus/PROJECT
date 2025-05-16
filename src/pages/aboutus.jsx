@@ -180,11 +180,11 @@ function AboutUs() {
 
   <div className="team-grid">
   {[
-    { img: tyroneImg, name: 'Tyrone Yazon', link: '/team/tyrone' },
-    { img: cuyaImg, name: 'Althea Cuya', link: '/team/althea' },
+    { img: tyroneImg, name: 'Tyrone Yazon', link: '/team/yazon' },
+    { img: cuyaImg, name: 'Althea Cuya', link: '/team/cuya' },
     { img: kisshiaImg, name: 'Kisshia De Jesus', link: '/team/dejesus' },
-    { img: theaImg, name: 'Thea Cabrera', link: '/team/thea' },
-    { img: patriciaImg, name: 'Patricia Arellano', link: '/team/patricia' },
+    { img: theaImg, name: 'Thea Cabrera', link: '/team/cabrera' },
+    { img: patriciaImg, name: 'Patricia Arellano', link: '/team/arellano' },
   ].map(member => (
     <div key={member.name} className="member-card">
       <Nav.Link as={Link} to={member.link}>
