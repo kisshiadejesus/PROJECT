@@ -182,7 +182,7 @@ function AboutUs() {
   {[
     { img: tyroneImg, name: 'Tyrone Yazon', link: '/team/tyrone' },
     { img: cuyaImg, name: 'Althea Cuya', link: '/team/althea' },
-    { img: kisshiaImg, name: 'Kisshia De Jesus', link: '/team/kisshia' },
+    { img: kisshiaImg, name: 'Kisshia De Jesus', link: '/team/dejesus' },
     { img: theaImg, name: 'Thea Cabrera', link: '/team/thea' },
     { img: patriciaImg, name: 'Patricia Arellano', link: '/team/patricia' },
   ].map(member => (
