@@ -1,0 +1,110 @@
+/* General Page Setup */
+.confirmation-page {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #ffffff;
+  color: #333;
+}
+
+/* Navbar */
+.navbar-custom {
+  background-color: white;
+  border-bottom: 1px solid #eaeaea;
+}
+
+.navbar-custom .nav-link {
+  font-weight: 600;
+  color: #C00000 !important;
+}
+
+.brand {
+  font-weight: bold;
+  font-size: 28px;
+  color: #C00000;
+}
+
+/* Search Bar */
+.search-wrapper {
+  position: relative;
+}
+
+.search-wrapper input {
+  width: 250px;
+  height: 35px;
+  padding-left: 40px;
+  border: none;
+  border-radius: 20px;
+  background-color: #f1f1f1;
+  font-size: 14px;
+}
+
+/* Icons */
+.cart-icon,
+.user-icon {
+  width: 24px;
+  height: 24px;
+}
+
+/* Confirmation Box */
+.confirmation-page .confirmation-icon {
+  width: 100px;
+  height: 100px;
+  background-color: #C00000;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+}
+
+.confirmation-page .confirmation-icon span {
+  color: white;
+  font-size: 3rem;
+}
+
+/* Footer */
+footer.footer {
+  background-color: #f9f9f9;
+  margin-top: 40px;
+}
+
+footer h5,
+footer h6 {
+  color: #C00000;
+  font-weight: 700;
+}
+
+footer ul {
+  padding: 0;
+  list-style: none;
+}
+
+footer a {
+  text-decoration: none;
+  color: #666;
+  font-size: 14px;
+}
+
+footer a:hover {
+  color: #C00000;
+}
+
+/* Payment Icons */
+footer img {
+  height: 20px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .search-wrapper input {
+    width: 180px;
+  }
+
+  .navbar-custom .nav-link {
+    font-size: 14px;
+  }
+
+  footer .text-end,
+  footer .text-center {
+    text-align: left !important;
+  }
+}

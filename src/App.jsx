@@ -9,6 +9,8 @@ import Content from './pages/content.jsx';
 import AboutUs from './pages/aboutus.jsx';
 import Cart from './pages/cart.jsx';
 import CheckoutPage from './pages/checkout.jsx';
+import Payment from './pages/payment.jsx';
+import Confirmation from './pages/confirmation.jsx';
 import DeJesusPage from './pages/team/dejesus.jsx'; 
 import ArellanoPage from './pages/team/arellano.jsx'; 
 import CabreraPage from './pages/team/cabrera.jsx';
@@ -26,6 +28,8 @@ function App() {
         <Route path="/shop" element={<Welcome />} /> 
         <Route path="/cart" element={<Cart />} />
         <Route path="/checkout" element={<CheckoutPage />} />
+        <Route path="/payment" element={<Payment />} />
+        <Route path="/confirmation" element={<Confirmation />} />
                 {/* Add routes for individual team members */}
         <Route path="/team/dejesus" element={<DeJesusPage />} />
         <Route path="/team/yazon" element={<YazonPage />} />

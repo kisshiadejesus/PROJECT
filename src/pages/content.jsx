@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Navbar, Container, Nav, Button, Row, Col, Card, Pagination } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import searchIcon from '../assets/search-icon.png';
 import UserIcon from '../assets/UserIcon.png';
 import CartIcon from '../assets/Cart.png';
@@ -15,7 +15,7 @@ import mastercardIcon from '../assets/mastercard.png';
 import paypalIcon from '../assets/paypal.png';
 import applepayIcon from '../assets/applepay.png';
 import gpayIcon from '../assets/gpay.png';
-import CartIconImage from '../assets/Cart.png'; 
+import CartIconImage from '../assets/Cart.png';
 import { useCart } from '../context/cartcontext';
 
 import '../styles/welcome.css';
@@ -177,44 +177,57 @@ const renderStars = (rating) => {
 
     for (let i = 0; i < maxRating; i++) {
         if (i < fullStars) {
-            stars.push(<span key={`full-${i}`} style={{ color: '#ffd700', fontSize: '1.2rem' }}>★</span>); 
+            stars.push(<span key={`full-${i}`} style={{ color: '#ffd700', fontSize: '1.2rem' }}>★</span>);
         } else if (i === fullStars && halfStar) {
-            stars.push(<span key={`half-${i}`} style={{ color: '#ffd700', fontSize: '1.2rem' }}>★</span>); 
+            stars.push(<span key={`half-${i}`} style={{ color: '#ffd700', fontSize: '1.2rem' }}>★</span>);
         }
         else {
-            stars.push(<span key={`empty-${i}`} style={{ color: '#ddd', fontSize: '1.2rem' }}>☆</span>); 
+            stars.push(<span key={`empty-${i}`} style={{ color: '#ddd', fontSize: '1.2rem' }}>☆</span>);
         }
     }
-    return { stars, ratingText }; 
+    return { stars, ratingText };
 };
 
 function Content() {
     const { addToCart, cartItems } = useCart();
-    console.log(cartItems);
+    const location = useLocation();
+    const navigate = useNavigate();
     const [showNewArrivalsBanner, setShowNewArrivalsBanner] = useState(true);
     const [searchQuery, setSearchQuery] = useState('');
-    const [sortBy, setSortBy] = useState('Most Popular'); 
-    const [sortedProducts, setSortedProducts] = useState(products); 
-    const totalQty = cartItems.reduce((sum, item) => sum + item.qty, 0); 
+    const [sortBy, setSortBy] = useState('Most Popular');
+    const [sortedProducts, setSortedProducts] = useState(products);
+    const totalQty = cartItems.reduce((sum, item) => sum + item.qty, 0);
 
-    const productsPerPage = 9; 
-    const [currentPage, setCurrentPage] = useState(1); 
+    const productsPerPage = 9;
+    const [currentPage, setCurrentPage] = useState(1);
 
     const handleCloseNewArrivalsBanner = () => {
         setShowNewArrivalsBanner(false);
     };
 
-    const handleSearchChange = (event) => {
-        setSearchQuery(event.target.value);
+const handleSearchChange = (event) => {
+        const newSearchQuery = event.target.value;
+        setSearchQuery(newSearchQuery);
+        const searchParams = new URLSearchParams(location.search);
+        if (newSearchQuery) {
+            searchParams.set('q', newSearchQuery);
+        } else {
+            searchParams.delete('q');
+        }
+        searchParams.delete('page'); // Ensure page is reset to 1 on new search
+        navigate(`${location.pathname}?${searchParams.toString()}`, { replace: true });
     };
 
     const handleSortChange = (event) => {
         setSortBy(event.target.value);
+        const searchParams = new URLSearchParams(location.search);
+        searchParams.set('sort', event.target.value);
+        searchParams.delete('page'); // Reset page to 1 on new sort
+        navigate(`${location.pathname}?${searchParams.toString()}`, { replace: true });
     };
 
-    // Function to sort products
     const sortProducts = (productsToSort, sortType) => {
-        let sorted = [...productsToSort]; 
+        let sorted = [...productsToSort];
 
         switch (sortType) {
             case 'Price: Low to High':
@@ -223,49 +236,60 @@ function Content() {
             case 'Price: High to Low':
                 sorted.sort((a, b) => b.price - a.price);
                 break;
-            default: 
+            default:
                 break;
         }
         return sorted;
     };
 
     useEffect(() => {
-        console.log("Search Query:", searchQuery); 
+        const searchParams = new URLSearchParams(location.search);
+        const urlSearchQuery = searchParams.get('q') || '';
+        const urlSortBy = searchParams.get('sort') || 'Most Popular';
+        const urlPage = parseInt(searchParams.get('page') || '1', 10); // Get page from URL
+
+        setSearchQuery(urlSearchQuery);
+        setSortBy(urlSortBy);
+        setCurrentPage(urlPage);
+    }, [location.search]);
+
+    useEffect(() => {
         const filtered = products.filter(product =>
-          product.name.toLowerCase().includes(searchQuery.toLowerCase())
+            product.name.toLowerCase().includes(searchQuery.toLowerCase())
         );
-        console.log("Filtered:", filtered); 
         const sorted = sortProducts(filtered, sortBy);
-        console.log("Sorted:", sorted); 
         setSortedProducts(sorted);
-      }, [sortBy, searchQuery]);
+    }, [sortBy, searchQuery]);
 
     const indexOfLastProduct = currentPage * productsPerPage;
     const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
     const currentProducts = sortedProducts.slice(indexOfFirstProduct, indexOfLastProduct);
 
-    const paginate = (pageNumber) => setCurrentPage(pageNumber);
-
-    const [isHovered, setIsHovered] = useState(false);
+    const paginate = (pageNumber) => {
+        setCurrentPage(pageNumber);
+        const searchParams = new URLSearchParams(location.search);
+        searchParams.set('page', pageNumber); // Set the 'page' parameter in the URL
+        navigate(`${location.pathname}?${searchParams.toString()}`, { replace: true });
+    };
 
     const StyledPagination = () => {
         let items = [];
         for (let number = 1; number <= Math.ceil(sortedProducts.length / productsPerPage); number++) {
-          items.push(
-            <Pagination.Item key={number} active={number === currentPage} onClick={() => paginate(number)}>
-              {number}
-            </Pagination.Item>,
-          );
+            items.push(
+                <Pagination.Item key={number} active={number === currentPage} onClick={() => paginate(number)}>
+                    {number}
+                </Pagination.Item>,
+            );
         }
 
         return (
             <Pagination className="custom-pagination">
-                <Pagination.Prev onClick={() => paginate(currentPage - 1)} disabled={currentPage === 1} className="custom-page-item styled-prev-next" style={{ marginRight: '5rem' }}>
-                  <span style={{ color: '#000' }}>← Previous</span>
+                <Pagination.Prev onClick={() => paginate(Math.max(1, currentPage - 1))} disabled={currentPage === 1} className="custom-page-item styled-prev-next" style={{ marginRight: '5rem' }}>
+                    <span style={{ color: '#000' }}>← Previous</span>
                 </Pagination.Prev>
                 {items}
-                <Pagination.Next onClick={() => paginate(currentPage + 1)} disabled={currentPage === Math.ceil(sortedProducts.length / productsPerPage)} className="custom-page-item styled-prev-next" style={{ marginLeft: '5rem' }}>
-                  <span style={{ color: '#000' }}>Next →</span>
+                <Pagination.Next onClick={() => paginate(Math.min(Math.ceil(sortedProducts.length / productsPerPage), currentPage + 1))} disabled={currentPage === Math.ceil(sortedProducts.length / productsPerPage)} className="custom-page-item styled-prev-next" style={{ marginLeft: '5rem' }}>
+                    <span style={{ color: '#000' }}>Next →</span>
                 </Pagination.Next>
                 <style jsx global>{`
                     .custom-pagination .page-item {
@@ -354,7 +378,6 @@ function Content() {
         );
     };
 
-
     return (
         <>
             {showNewArrivalsBanner && (
@@ -422,46 +445,47 @@ function Content() {
             {/* Main Content (Shopping Section) */}
             <Container className="my-4">
                 {/* Breadcrumb */}
-                <div style={{  marginTop: '3rem' }}>
-                  <div style={{ marginBottom: '1rem', fontSize: '0.8rem', color: '#6c757d', marginLeft: '90px', marginTop: '80px', fontSize: '15px' }}>
-                      Home &gt; <span style={{color: '#000000'}}>Casual</span>
-                  </div>
-                  <h2 className="mb-2" style={{  float: 'left', marginLeft: '90px', marginTop:'20px' }}>Men</h2>
-                </div>
-                {/* Added text with reduced spacing and flexbox */}
-                <div style={{ display: 'flex', justifyContent: 'flex-end',  marginBottom: '1.5rem', fontSize: '0.9rem', color: '#666' }}>
-    <div style={{ display: 'flex', gap: '10px', alignItems: 'baseline', marginTop: '1rem' }}>
-        <div>
-            {sortedProducts.length > 0 ? (
-                <span>
-                    Showing {indexOfFirstProduct + 1} - {Math.min(indexOfLastProduct, sortedProducts.length)} of {sortedProducts.length} Products
-                </span>
-            ) : (
-                <span>
-                    Showing 0 - 0 of 0 Products
-                </span>
-            )}
-        </div>
-        <div>
-            Sort by:
-            <select
-                style={{ marginLeft: '0.5rem', padding: '0.25rem', borderRadius: '4px', borderColor: '#ccc' }}
-                value={sortBy}
-                onChange={handleSortChange}
-            >
-                <option>Most Popular</option>
-                <option>Price: Low to High</option>
-                <option>Price: High to Low</option>
-            </select>
+ <div className="cart-header" style={{ marginLeft: '10px', marginBottom: '1.5rem', marginTop: '90px' }}>
+    <div className="breadcrumb" style={{ marginBottom: '0.5rem' }}>
+        <Link to="/" className="breadcrumb-link">Home</Link> &nbsp;&gt;
+        <span className="breadcrumb-current">&nbsp;Casual</span>
+    </div>
+    <div style={{ display: 'flex', justifyContent: 'flex-start', alignItems: 'center',marginLeft: '3.5rem', gap: '42rem' }}>
+        <h2>Men</h2>
+        {/* Added text with reduced spacing and flexbox */}
+        <div style={{ display: 'flex', gap: '20px', alignItems: 'baseline', fontSize: '0.9rem', color: '#666', marginLeft: '2rem' }}>
+            <div style={{ whiteSpace: 'nowrap' }}>
+                {sortedProducts.length > 0 ? (
+                    <span>
+                        Showing {indexOfFirstProduct + 1} - {Math.min(indexOfLastProduct, sortedProducts.length)} of {sortedProducts.length} Products
+                    </span>
+                ) : (
+                    <span>
+                        Showing 0 - 0 of 0 Products
+                    </span>
+                )}
+            </div>
+            <div style={{ display: 'flex', alignItems: 'baseline' }}>
+                Sort&nbsp;by:&nbsp; {/* Added a non-breaking space */}
+                <select
+                    style={{ marginLeft: '0.5rem', padding: '0.25rem', borderRadius: '4px', borderColor: '#ccc' }}
+                    value={sortBy}
+                    onChange={handleSortChange}
+                >
+                    <option>Most Popular</option>
+                    <option>Price: Low to High</option>
+                    <option>Price: High to Low</option>
+                </select>
+            </div>
         </div>
     </div>
 </div>
                 <div style={{ clear: 'both' }}></div>
-                <div style={{ display: 'flex', marginTop:'40px', marginLeft:'30px', justifyContent: 'center', width: '100%' }}>
+                <div style={{ display: 'flex', marginTop:'40px', marginLeft:'3px', justifyContent: 'center', width: '100%' }}>
                 <Row xs={1} sm={2} md={3} lg={3} className="g-3 justify-content-center">
                     {currentProducts.map((product, index) => (
                         <Col key={index} className="d-flex align-items-stretch justify-content-center"  >
-                                <Card className="h-100 border-0" style={{ maxWidth: '330px' }}>
+                                <Card className="h-100 border-0" style={{ maxWidth: '313px' }}>
                                      <div
                                         style={{
                                             width: '330px',
@@ -515,8 +539,10 @@ function Content() {
                     ))}
                      {sortedProducts.length === 0 && (
                         <Col xs={12} className="text-center">
-                            <p>No products found matching your search.</p>
-                        </Col>
+      <p style={{ margin: 0, whiteSpace: 'nowrap', textAlign: 'center', marginTop: '10rem', marginRight: '600px', marginBottom: '15rem' }}>
+        No products found matching your search.
+      </p>
+    </Col>
                     )}
                 </Row>
 

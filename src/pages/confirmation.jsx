@@ -1,40 +1,41 @@
-//cart.jsx
-
-import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { Navbar, Nav, Container, Button, Row, Col } from 'react-bootstrap';
+import React, { useState, useEffect } from 'react';
+import { Navbar, Container, Nav, Button, Row, Col, Card, Pagination, Image, Form } from 'react-bootstrap';
+import { Link, useNavigate } from 'react-router-dom'; // Import useNavigate
 import searchIcon from '../assets/search-icon.png';
-import CartIcon from '../assets/Cart.png';
 import UserIcon from '../assets/UserIcon.png';
-import { useCart } from '../context/cartcontext.jsx';
+import CartIcon from '../assets/Cart.png';
 import twitterIcon from '../assets/twitter.png';
 import facebookIcon from '../assets/facebook.png';
 import instagramIcon from '../assets/instagram.png';
 import githubIcon from '../assets/github.png';
-import visaIcon from '../assets/visa.png';
+import visa from '../assets/visa.png'; // Corrected import for payment icons
+import mastercard from '../assets/mastercard.png';
+import paypal from '../assets/paypal.png';
+import gpay from '../assets/gpay.png';
+import stripe from '../assets/stripe.png';
+import visaIcon from '../assets/visa.png'; // Using consistent import for footer
 import mastercardIcon from '../assets/mastercard.png';
 import paypalIcon from '../assets/paypal.png';
 import applepayIcon from '../assets/applepay.png';
 import gpayIcon from '../assets/gpay.png';
-import '../styles/cart.css';
+import { useCart } from '../context/cartcontext';
+import '../styles/payment.css';
 
-function CartPage() {
-  const { cartItems, updateQty, removeItem, totalQty } = useCart();
+const generateReferenceId = () => {
+  const timestamp = Date.now().toString().slice(-6);
+  const randomPart = Math.floor(1000 + Math.random() * 9000); // 4-digit random number
+  return `REF-${timestamp}${randomPart}`;
+};
+
+const Confirmation = () => {
+  const [referenceId, setReferenceId] = useState('');
   const [showNewArrivalsBanner, setShowNewArrivalsBanner] = useState(true); // Set to true to show the banner
-  const [searchQuery, setSearchQuery] = useState('');
-  const navigate = useNavigate();
+  const [searchQuery, setSearchQuery] = useState(''); // Add state for search query
+  const { totalQty } = useCart(); // Ensure totalQty is available
 
-  const subtotal = cartItems.reduce((sum, item) => sum + item.price * item.qty, 0);
-  const deliveryFee = cartItems.length > 0 ? 15 : 0;
-  const total = subtotal + deliveryFee;
-
-  const goToCheckout = () => {
-    if (cartItems.length === 0) {
-      alert("Your cart is empty!");
-    } else {
-      navigate('/checkout');
-    }
-  };
+  useEffect(() => {
+    setReferenceId(generateReferenceId());
+  }, []);
 
   const handleCloseNewArrivalsBanner = () => {
     setShowNewArrivalsBanner(false);
@@ -45,8 +46,10 @@ function CartPage() {
     // Implement your search logic here
   };
 
+  const currentYear = new Date().getFullYear();
+
   return (
-    <div>
+    <div className="confirmation-page">
       {showNewArrivalsBanner && (
         <div className="new-arrivals-banner">
           <p>New Arrivals Just Dropped! <Link to="/new-arrivals" className="banner-link">Explore Now</Link></p>
@@ -109,52 +112,27 @@ function CartPage() {
         </Container>
       </Navbar>
 
-      {/* Breadcrumb */}
-<div className="cart-header" style={{ marginLeft: '95px', marginBottom: '20px', marginTop: '90px' }}>
-        <div className="breadcrumb">
-          <Link to="/" className="breadcrumb-link">Home</Link> &nbsp;&gt;
-          <span className="breadcrumb-current">&nbsp;Cart</span>
+      {/* CONFIRMATION */}
+      <Container className="text-center py-5">
+        <div
+          className="d-inline-flex justify-content-center align-items-center mb-4"
+          style={{
+            width: '100px',
+            height: '100px',
+            backgroundColor: '#C00000',
+            borderRadius: '50%',
+            marginTop: '9rem'
+          }}
+        >
+          <span style={{ fontSize: '3rem', color: 'white' }}>✓</span>
         </div>
-        <h2>Your Cart</h2>
-      </div>
-      <div className="cart-container">
-        <div className="cart-grid">
-          <div className="cart-items">
-            {cartItems.length > 0 ? (
-              cartItems.map(item => (
-                <div key={item.id} className="cart-item">
-                  <img src={item.image} alt={item.name} />
-                  <div>
-                    <strong>{item.name}</strong>
-                    <p>Size: {item.size} <br /> Color: {item.color}</p>
-                    <p>${item.price}</p>
-                    <div className="qty-controls">
-                      <button onClick={() => updateQty(item.id, -1)}>-</button>
-                      <span>{item.qty}</span>
-                      <button onClick={() => updateQty(item.id, 1)}>+</button>
-                      <button onClick={() => removeItem(item.id)}>🗑</button>
-                    </div>
-                  </div>
-                </div>
-              ))
-            ) : (
-              <p className="empty-message">Your cart is empty. Start shopping now!</p>
-            )}
-          </div>
+        <h1 className="fw-bold text-danger">ORDER CONFIRMED!</h1>
+        <p className="mt-3 fw-bold text-muted">REFERENCE ID: {referenceId}</p>
+      </Container>
 
-          <div className="order-summary">
-            <h4>Order Summary</h4>
-            <p>Subtotal: ${subtotal}</p>
-            <p>Delivery Fee: ${deliveryFee}</p>
-            <h5>Total: ${total}</h5>
-            <input type="text" placeholder="Promo code" />
-            <button className="apply">Apply</button>
-            <button onClick={goToCheckout} className="checkout-button">Go to Checkout →</button>
-          </div>
-        </div>
-      </div>
+      {/* FOOTER */}
 
-      <footer className="footer" style={{ marginTop: '4rem' }}>
+      <footer className="footer" style={{ marginTop: '10rem' }}>
         <Container fluid className="p-0">
           <Row className="newsletter-banner align-items-center justify-content-center text-center">
             <Col xs={12} md={8} lg={6}>
@@ -189,16 +167,16 @@ function CartPage() {
                 </p>
                 <div className="social-icons">
                   <Button variant="outline-light" title="Twitter" style={{ backgroundColor: 'white' }}>
-                    <img src={twitterIcon} alt="Twitter" height="30" />
+                    <Image src={twitterIcon} alt="Twitter" height="30" />
                   </Button>
                   <Button variant="outline-light" title="Facebook" style={{ backgroundColor: 'white' }}>
-                    <img src={facebookIcon} alt="Facebook" height="30" />
+                    <Image src={facebookIcon} alt="Facebook" height="30" />
                   </Button>
                   <Button variant="outline-light" title="Instagram" style={{ backgroundColor: 'white' }}>
-                    <img src={instagramIcon} alt="Instagram" height="30" />
+                    <Image src={instagramIcon} alt="Instagram" height="30" />
                   </Button>
                   <Button variant="outline-light" title="Github" style={{ backgroundColor: 'white' }}>
-                    <img src={githubIcon} alt="Github" height="30" />
+                    <Image src={githubIcon} alt="Github" height="30" />
                   </Button>
                 </div>
               </Col>
@@ -207,17 +185,17 @@ function CartPage() {
                 <h6>Help</h6>
                 <ul className="list-unstyled">
                   <li>
-                    <Link to="#" className="text-decoration-none text-muted">
+                    <Link to="/delivery-details" className="text-decoration-none text-muted">
                       Delivery Details
                     </Link>
                   </li>
                   <li>
-                    <Link to="#" className="text-decoration-none text-muted">
+                    <Link to="/terms" className="text-decoration-none text-muted">
                       Terms & Conditions
                     </Link>
                   </li>
                   <li>
-                    <Link to="#" className="text-decoration-none text-muted">
+                    <Link to="/privacy" className="text-decoration-none text-muted">
                       Privacy Policy
                     </Link>
                   </li>
@@ -228,22 +206,22 @@ function CartPage() {
                 <h6>FAQ</h6>
                 <ul className="list-unstyled">
                   <li>
-                    <Link to="#" className="text-decoration-none text-muted">
+                    <Link to="/account-faq" className="text-decoration-none text-muted">
                       Account
                     </Link>
                   </li>
                   <li>
-                    <Link to="#" className="text-decoration-none text-muted">
+                    <Link to="/deliveries-faq" className="text-decoration-none text-muted">
                       Manage Deliveries
                     </Link>
                   </li>
                   <li>
-                    <Link to="#" className="text-decoration-none text-muted">
+                    <Link to="/orders-faq" className="text-decoration-none text-muted">
                       Orders
                     </Link>
                   </li>
                   <li>
-                    <Link to="#" className="text-decoration-none text-muted">
+                    <Link to="/payments-faq" className="text-decoration-none text-muted">
                       Payments
                     </Link>
                   </li>
@@ -256,7 +234,7 @@ function CartPage() {
             <Row className="align-items-center justify-content-between">
               <Col md="auto" className="footer-copyright">
                 <div className="text-muted">
-                  Swift.co © 2023-2025, All Rights Reserved
+                  Swift.co © {currentYear}-2025, All Rights Reserved
                 </div>
               </Col>
               <Col md="auto" className="d-flex">
@@ -266,35 +244,35 @@ function CartPage() {
                     title="Pay with Visa"
                     style={{ backgroundColor: 'white' }}
                   >
-                    <img src={visaIcon} alt="Visa" height="15" />
+                    <Image src={visaIcon} alt="Visa" height="15" />
                   </Button>
                   <Button
                     variant="outline-light"
                     title="Pay with Mastercard"
                     style={{ backgroundColor: 'white' }}
                   >
-                    <img src={mastercardIcon} alt="Mastercard" height="15" />
+                    <Image src={mastercardIcon} alt="Mastercard" height="15" />
                   </Button>
                   <Button
                     variant="outline-light"
                     title="Pay with PayPal"
                     style={{ backgroundColor: 'white' }}
                   >
-                    <img src={paypalIcon} alt="PayPal" height="15" />
+                    <Image src={paypalIcon} alt="PayPal" height="15" />
                   </Button>
                   <Button
                     variant="outline-light"
                     title="Pay with Apple Pay"
                     style={{ backgroundColor: 'white' }}
                   >
-                    <img src={applepayIcon} alt="Apple Pay" height="15" />
+                    <Image src={applepayIcon} alt="Apple Pay" height="15" />
                   </Button>
                   <Button
                     variant="outline-light"
                     title="Pay with Google Pay"
                     style={{ backgroundColor: 'white' }}
                   >
-                    <img src={gpayIcon} alt="Google Pay" height="15" />
+                    <Image src={gpayIcon} alt="Google Pay" height="15" />
                   </Button>
                 </div>
               </Col>
@@ -304,6 +282,6 @@ function CartPage() {
       </footer>
     </div>
   );
-}
+};
 
-export default CartPage;
+export default Confirmation;
