@@ -1,40 +1,40 @@
 //welcome.jsx
-
 import React, { useRef } from 'react';
- import { useNavigate, Link } from 'react-router-dom';
- import '../styles/welcome.css';
- import Container from 'react-bootstrap/Container';
- import Nav from 'react-bootstrap/Nav';
- import Navbar from 'react-bootstrap/Navbar';
- import Button from 'react-bootstrap/Button';
- import formulaOneLogo from '../assets/02.png';
- import searchIcon from '../assets/search-icon.png';
- import UserIcon from '../assets/UserIcon.png'; 
- import backgroundImage from '../assets/03.jpeg';
- import CartIcon from '../assets/Cart.png';
- import NA1 from '../assets/NA1.jpg';
- import NA2 from '../assets/NA2.jpg';
- import NA3 from '../assets/NA3.jpg';
- import NA4 from '../assets/NA4.jpg';
- import TS1 from '../assets/TS1.jpg';
- import TS2 from '../assets/TS2.jpg';
- import TS3 from '../assets/TS3.jpg';
- import TS4 from '../assets/TS4.jpg';
- import { Col, Row, Card } from "react-bootstrap";
- import twitterIcon from '../assets/twitter.png';
- import facebookIcon from '../assets/facebook.png';
- import instagramIcon from '../assets/instagram.png';
- import githubIcon from '../assets/github.png';
- import visaIcon from '../assets/visa.png';
- import mastercardIcon from '../assets/mastercard.png';
- import paypalIcon from '../assets/paypal.png';
- import applepayIcon from '../assets/applepay.png';
- import gpayIcon from '../assets/gpay.png';
- // Import category images (assuming you have these in your assets folder)
- import mens from '../assets/mens.png';
- import womens from '../assets/womens.png';
- import accessories from '../assets/accessories.png';
- import collectibles from '../assets/collectibles.png';
+import { useNavigate, Link } from 'react-router-dom';
+import '../styles/welcome.css';
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+import Button from 'react-bootstrap/Button';
+import formulaOneLogo from '../assets/02.png';
+import searchIcon from '../assets/search-icon.png';
+import UserIcon from '../assets/UserIcon.png';
+import backgroundImage from '../assets/03.jpeg';
+import CartIcon from '../assets/Cart.png';
+import { useCart } from '../context/cartcontext'; // Import the useCart hook
+import NA1 from '../assets/NA1.jpg';
+import NA2 from '../assets/NA2.jpg';
+import NA3 from '../assets/NA3.jpg';
+import NA4 from '../assets/NA4.jpg';
+import TS1 from '../assets/TS1.jpg';
+import TS2 from '../assets/TS2.jpg';
+import TS3 from '../assets/TS3.jpg';
+import TS4 from '../assets/TS4.jpg';
+import { Col, Row, Card } from "react-bootstrap";
+import twitterIcon from '../assets/twitter.png';
+import facebookIcon from '../assets/facebook.png';
+import instagramIcon from '../assets/instagram.png';
+import githubIcon from '../assets/github.png';
+import visaIcon from '../assets/visa.png';
+import mastercardIcon from '../assets/mastercard.png';
+import paypalIcon from '../assets/paypal.png';
+import applepayIcon from '../assets/applepay.png';
+import gpayIcon from '../assets/gpay.png';
+// Import category images (assuming you have these in your assets folder)
+import mens from '../assets/mens.png';
+import womens from '../assets/womens.png';
+import accessories from '../assets/accessories.png';
+import collectibles from '../assets/collectibles.png';
 
  const customerReviewsData = [
     {
@@ -173,11 +173,11 @@ import React, { useRef } from 'react';
 
 function Welcome() {
     const navigate = useNavigate();
-
     const topSellingContainerRef = React.useRef(null);
     const newArrivalContainerRef = React.useRef(null);
-
     const [showNewArrivalsBanner, setShowNewArrivalsBanner] = React.useState(true);
+    const { cartItems } = useCart(); // Access cartItems from the context
+    const totalQty = cartItems ? cartItems.reduce((sum, item) => sum + item.qty, 0) : 0; // Calculate totalQty
 
     const handleLogout = () => {
         console.log('Logging out');
@@ -196,19 +196,21 @@ function Welcome() {
                     <button className="close-banner-button" onClick={handleCloseNewArrivalsBanner}>&times;</button>
                 </div>
             )}
-            
+
             <Navbar bg="light" data-bs-theme="light" className="navbar-custom" style={{ top: showNewArrivalsBanner ? '40px' : '0' }}>
                 <Container className="navbar-content">
-                    <Navbar.Brand className="brand"><h3>
-                        <span style={{ color: '#C00000', fontWeight: '1000', marginRight: '8px', marginLeft: '70px' }}>SWIFT.CO</span>
-                    </h3></Navbar.Brand>
+                    <Navbar.Brand className="brand">
+                        <h3>
+                            <span style={{ color: '#C00000', fontWeight: '1000', marginRight: '8px', marginLeft: '70px' }}>SWIFT.CO</span>
+                        </h3>
+                    </Navbar.Brand>
                     <Nav className="nav-links">
                         <Nav.Link as={Link} to="/shop" className="red-link">Shop</Nav.Link>
                         <Nav.Link as={Link} to="/on-sale" className="red-link">On Sale</Nav.Link>
                         <Nav.Link as={Link} to="/new-arrivals" className="red-link">New Arrivals</Nav.Link>
                         <Nav.Link as={Link} to="/about-us" className="red-link">About Us</Nav.Link>
                     </Nav>
-                        
+
                     <div className="search-bar">
                         <div className="search-wrapper">
                             <img src={searchIcon} alt="Search Icon" className="search-icon" />
@@ -221,8 +223,25 @@ function Welcome() {
                     </div>
 
                     <Nav className="icon-wrapper">
-                        <Nav.Link as={Link} to="/cart">
+                        <Nav.Link as={Link} to="/cart" style={{ position: 'relative' }}>
                             <img src={CartIcon} alt="Cart" className="cart-icon" />
+                            {totalQty > 0 && (
+                                <span
+                                    style={{
+                                        position: 'absolute',
+                                        top: '0px',
+                                        right: '0px',
+                                        backgroundColor: '#C00000',
+                                        color: 'white',
+                                        borderRadius: '50%',
+                                        padding: '2px 6px',
+                                        fontSize: '0.7rem',
+                                        fontWeight: 'bold',
+                                    }}
+                                >
+                                    {totalQty}
+                                </span>
+                            )}
                         </Nav.Link>
                         <Nav.Link as={Link} to="/profile">
                             <img src={UserIcon} alt="User" className="user-icon" />
